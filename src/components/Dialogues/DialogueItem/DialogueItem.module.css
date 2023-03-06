@@ -1,0 +1,23 @@
+.dialogueItem {
+    padding: 5px;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.dialogueItem a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+.dialoguePhoto {
+    padding-right: 10px;
+    width: 70px;
+    height: 70px;
+    vertical-align: middle;
+}
+
+.active {
+    font-size: 25px;
+    font-weight: bold;
+}
+
