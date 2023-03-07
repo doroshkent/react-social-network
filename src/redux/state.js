@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 const friendsData = [
     {id: 1, name: 'Nikita', ava: require('../img/Nikita.png')},
     {id: 2, name: 'Masha', ava: require('../img/Masha.png')},
@@ -27,5 +29,16 @@ const state = {
         ],
     },
 }
+
+export let addPost = (postText) => {
+    let post = {
+        id: 5,
+        message: postText,
+        likesCount: 0,
+    };
+    state.profilePage.posts.push(post);
+    rerenderEntireTree(state);
+}
+
 
 export default state;
