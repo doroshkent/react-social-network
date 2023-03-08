@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './App.css';
+import style from './App.module.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
@@ -12,13 +12,15 @@ import Settings from "./components/Settings/Settings";
 const App = (props) => {
     return (
         <BrowserRouter>
-            <div className='app-wrapper'>
+            <div className={style.appWrapper}>
                 <Header/>
-                <Navbar friendsNavbarState={props.state.friends}/>
+                <Navbar navbarState={props.state.sidebar}/>
                 <div className={style.appWrapperMain}>
                     <Routes>
                         <Route path='/profile'
-                               element={<Profile profileState={props.state.profilePage} addPost={props.addPost}/>}/>
+                               element={<Profile profileState={props.state.profilePage}
+                                                 addPost={props.addPost}
+                                                 updatePostText={props.updatePostText} />}/>
                         <Route path='/dialogues/*'
                                element={<Dialogues dialoguesState={props.state.dialoguesPage}/>}/>
                         <Route path='/music' element={<Music />}/>

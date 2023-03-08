@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Post.module.css'
+import ReactDOM from "react-dom/client";
 
 const Post = (props) => {
     return (

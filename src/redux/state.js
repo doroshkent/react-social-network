@@ -9,14 +9,17 @@ const friendsData = [
 ];
 
 const state = {
-    friends: friendsData,
+    sidebar: {
+        friends: friendsData,
+    },
     profilePage: {
         posts: [
             {id: 0, message: 'Whazzaaap', likesCount: 14},
             {id: 1, message: 'This post was made by props', likesCount: 16},
             {id: 2, message: 'My first post', likesCount: 143},
             {id: 3, message: 'Joke, that\'s one is first', likesCount: 14},
-        ]
+        ],
+        newPostText: 'smth',
     },
     dialoguesPage: {
         dialogues: friendsData,
@@ -30,13 +33,19 @@ const state = {
     },
 }
 
-export let addPost = (postText) => {
+export let addPost = () => {
     let post = {
         id: 5,
-        message: postText,
+        message: state.profilePage.newPostText,
         likesCount: 0,
     };
     state.profilePage.posts.push(post);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+}
+
+export let updatePostText = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
 

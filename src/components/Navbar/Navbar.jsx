@@ -29,7 +29,7 @@ const Navbar = (props) => {
                 </li>
                 <li className={style.friendsItem}>
                     <NavLink to='/friends' className={setNavCLass}>Friends</NavLink>
-                    <FriendsNav friends={props.friendsNavbarState}/>
+                    <FriendsNav friends={props.navbarState.friends}/>
                 </li>
             </ul>
         </nav>
