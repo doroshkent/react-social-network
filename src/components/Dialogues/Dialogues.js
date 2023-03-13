@@ -2,7 +2,7 @@ import React from "react";
 import style from './Dialogues.module.css'
 import Dialogue from "./Dialogue/Dialogue";
 import Message from "./Message/Message";
-import {sendMessageActionCreator, updateMessageTextActionCreator} from "../../redux/store"
+import {sendMessageActionCreator, updateMessageTextActionCreator} from "../../redux/dialoguesReducer"
 
 const Dialogues = ({dialogues: {dialogues, messages, newMessageText}, dispatch}) => {
     let onSendMessageClick = () => {
