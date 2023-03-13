@@ -1,21 +1,16 @@
 import React from 'react';
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
+import {addPostActionCreator, updatePostTextActionCreator} from "../../../redux/store";
 
-const MyPosts = (props) => {
-    let postItems = props.profileState.posts.map( post => {
-        return <Post message={post.message} likeCount={post.likesCount}/>
-    })
-
-    let newPostElement = React.createRef();
-
-    let addPost = () => {
-        props.dispatch({ type: 'ADD-POST' });
+const MyPosts = ({profile: {posts, newPostText}, dispatch}) => {
+    const addPost = () => {
+        dispatch(addPostActionCreator());
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.dispatch( {type: 'UPDATE-POST-TEXT', newText: text} );
+    const onPostChange = (e) => {
+        const text = e.target.value;
+        dispatch( updatePostTextActionCreator(text) );
     }
 
     return (
@@ -23,14 +18,14 @@ const MyPosts = (props) => {
             <h2>My posts</h2>
             <div>
                 <div>
-                    <textarea ref={ newPostElement } onChange={ onPostChange } value={props.profileState.newPostText} />
+                    <textarea onChange={ onPostChange } value={newPostText} />
                 </div>
                 <div>
                     <button onClick={ addPost }>Add post</button>
                 </div>
             </div>
             <div className={style.posts}>
-                { postItems }
+                { posts.map( post => <Post post={post}/>)}
             </div>
         </div>
     )

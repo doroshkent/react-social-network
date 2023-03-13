@@ -8,7 +8,7 @@ const setNavCLass = ({isActive}) => {
 }
 
 
-const Navbar = (props) => {
+const Navbar = ({sidebar}) => {
     return (
         <nav className={style.nav}>
             <ul className={style.navList}>
@@ -29,7 +29,7 @@ const Navbar = (props) => {
                 </li>
                 <li className={style.friendsItem}>
                     <NavLink to='/friends' className={setNavCLass}>Friends</NavLink>
-                    <FriendsNav friends={props.navbarState.friends}/>
+                    <FriendsNav friends={sidebar.friends}/>
                 </li>
             </ul>
         </nav>

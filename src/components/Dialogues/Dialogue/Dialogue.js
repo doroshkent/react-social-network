@@ -1,8 +1,8 @@
 import style from "./DialogueItem.module.css";
 import {NavLink} from "react-router-dom";
 
-const DialogueItem = (props) => {
-    const path = ` /${props.id}`;
+const Dialogue = ({ dialogue: {id, name, ava} }) => {
+    const path = ` /${id}`;
 
     const setDialogueActive = ({isActive}) => {
         return isActive ? style.active : '';
@@ -11,11 +11,11 @@ const DialogueItem = (props) => {
     return (
         <div className={style.dialogueItem}>
             <NavLink to={path} className={setDialogueActive}>
-                <img className={style.dialoguePhoto} src={props.ava}/>
-                {props.name}
+                <img className={style.dialoguePhoto} src={ava}/>
+                {name}
             </NavLink>
         </div>
     )
 }
 
-export default DialogueItem;
+export default Dialogue;

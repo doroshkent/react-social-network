@@ -3,12 +3,12 @@ import style from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = (props) => {
+const Profile = ({profile, dispatch}) => {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts profileState={props.profileState}
-                     dispatch={props.dispatch} />
+            <MyPosts profile={profile}
+                     dispatch={dispatch} />
         </div>
     )
 }

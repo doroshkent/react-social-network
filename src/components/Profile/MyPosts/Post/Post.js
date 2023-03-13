@@ -1,14 +1,13 @@
 import React from 'react';
 import style from './Post.module.css'
-import ReactDOM from "react-dom/client";
 
-const Post = (props) => {
+const Post = ({post: {message, likesCount}}) => {
     return (
         <div className={style.item}>
             <img src={require('../../../../img/ava.png')} />
-            {props.message}
+            {message}
             <div>
-                <span>{props.likeCount} likes</span>
+                <span>{likesCount} likes</span>
             </div>
         </div>
     )

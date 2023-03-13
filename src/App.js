@@ -1,32 +1,32 @@
 import React from 'react';
 import style from './App.module.css';
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogues from "./components/Dialogues/Dialogues";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
+import Template from "./components/Template/Template";
 
-const App = (props) => {
+const App = ({state: {sidebar, profilePage, dialoguesPage}, dispatch}) => {
     return (
         <BrowserRouter>
             <div className={style.appWrapper}>
-                <Header/>
-                <Navbar navbarState={props.state.sidebar}/>
-                <div className={style.appWrapperMain}>
-                    <Routes>
-                        <Route path='/profile'
-                               element={<Profile profileState={props.state.profilePage}
-                                                 dispatch={props.dispatch} />}/>
-                        <Route path='/dialogues/*'
-                               element={<Dialogues dialoguesState={props.state.dialoguesPage}/>}/>
-                        <Route path='/music' element={<Music />}/>
-                        <Route path='/news' element={<News />}/>
-                        <Route path='/settings' element={<Settings />}/>
-                    </Routes>
-                </div>
+                <Template sidebar={sidebar}>
+                    <div className={style.appWrapperMain}>
+                        <Routes>
+                            <Route path='/profile'
+                                   element={<Profile profile={profilePage}
+                                                     dispatch={dispatch} />}/>
+                            <Route path='/dialogues/*'
+                                   element={<Dialogues dialogues={dialoguesPage}
+                                                       dispatch={dispatch} />}/>
+                            <Route path='/music' element={<Music />}/>
+                            <Route path='/news' element={<News />}/>
+                            <Route path='/settings' element={<Settings />}/>
+                        </Routes>
+                    </div>
+                </Template>
             </div>
         </BrowserRouter>
     );

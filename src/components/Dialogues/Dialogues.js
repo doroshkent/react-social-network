@@ -1,33 +1,30 @@
 import React from "react";
 import style from './Dialogues.module.css'
-import DialogueItem from "./DialogueItem/DialogueItem";
-import MessageItem from "./MessageItem/MessageItem";
+import Dialogue from "./Dialogue/Dialogue";
+import Message from "./Message/Message";
+import {sendMessageActionCreator, updateMessageTextActionCreator} from "../../redux/store"
 
-const Dialogues = (props) => {
-    let dialogueItems = props.dialoguesState.dialogues.map( dialogue => {
-        return <DialogueItem name={dialogue.name} id={dialogue.id} ava={dialogue.ava}/>
-    })
+const Dialogues = ({dialogues: {dialogues, messages, newMessageText}, dispatch}) => {
+    let onSendMessageClick = () => {
+        dispatch(sendMessageActionCreator());
+    }
 
-    let messageItems = props.dialoguesState.messages.map( message => {
-        return <MessageItem message={message.messageText} isSent={message.isSent}/>
-    })
-
-    let messageText = React.createRef();
-
-    let sendMessage = () => {
-        let message = messageText.current.value;
-        alert(message);
+    let onMessageChange = (e) => {
+        let message = e.target.value;
+        dispatch(updateMessageTextActionCreator(message))
     }
 
     return (
         <div className={style.dialogues}>
             <div className={style.dialogueList}>
-                { dialogueItems }
+                { dialogues.map( dialogue => <Dialogue dialogue={dialogue}/>) }
             </div>
             <div className={style.messageList}>
-                { messageItems }
-                <textarea ref = { messageText } className={style.messageTextarea}></textarea>
-                <button onClick={ sendMessage } className={style.sendMessageButton}>Send message</button>
+                { messages.map( message => <Message message={message}/>) }
+                <textarea className={style.messageTextarea}
+                          onChange={ onMessageChange }
+                          value={ newMessageText } ></textarea>
+                <button onClick={ onSendMessageClick } className={style.sendMessageButton}>Send message</button>
             </div>
         </div>
     )
