@@ -1,4 +1,5 @@
 import style from './MessageItem.module.css';
+import PropTypes from "prop-types";
 
 const Message = ({message: {messageText, isSent}}) => {
 
@@ -12,6 +13,13 @@ const Message = ({message: {messageText, isSent}}) => {
             {messageText}
         </div>
     )
+}
+
+Message.propTypes = {
+    message: PropTypes.shape({
+        messageText: PropTypes.string,
+        isSent: PropTypes.bool
+    })
 }
 
 export default Message;

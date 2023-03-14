@@ -1,6 +1,7 @@
 import React from "react";
 import style from './FriendsNav.module.css'
-import FriendItem from "./FriendItem/FriendItem";
+import Friend from "./Friend/Friend";
+import PropTypes from 'prop-types';
 
 const FriendsNav = ({friends}) => {
     const pickedFriends = [...friends].sort( () => 0.5 - Math.random()).slice(0,3);
@@ -10,12 +11,16 @@ const FriendsNav = ({friends}) => {
             <ul className={style.friendsNavList}>
                 <li>
                     { pickedFriends.map( friend => (
-                        <FriendItem name={friend.name} id={friend.id} ava={friend.ava}/>
+                        <Friend friend={friend}/>
                     ))}
                 </li>
             </ul>
         </nav>
     )
+}
+
+FriendsNav.propTypes = {
+    friends: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default FriendsNav;

@@ -2,8 +2,10 @@ import React from 'react';
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {addPostActionCreator, updatePostTextActionCreator} from "../../../redux/profileReducer";
+import Button from "../../../style/Button";
+import PropTypes from "prop-types";
 
-const MyPosts = ({profile: {posts, newPostText}, dispatch}) => {
+const MyPosts = ({myPosts: {posts, newPostText}, dispatch}) => {
     const addPost = () => {
         dispatch(addPostActionCreator());
     }
@@ -21,14 +23,23 @@ const MyPosts = ({profile: {posts, newPostText}, dispatch}) => {
                     <textarea onChange={ onPostChange } value={newPostText} />
                 </div>
                 <div>
-                    <button onClick={ addPost }>Add post</button>
+                    <Button onClick={ addPost }>Add post</Button>
                 </div>
             </div>
-            <div className={style.posts}>
+            <div>
                 { posts.map( post => <Post post={post}/>)}
             </div>
         </div>
     )
 }
+
+MyPosts.propTypes = {
+    myPosts: PropTypes.shape({
+        posts: PropTypes.arrayOf(PropTypes.object),
+        newPostText: PropTypes.string
+    }),
+    dispatch: PropTypes.func
+}
+
 
 export default MyPosts;

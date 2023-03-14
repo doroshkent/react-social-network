@@ -2,7 +2,7 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
 
 const initialState = {
-    dialogues: [
+    dialoguesList: [
         {id: 1, name: 'Nikita', ava: require('../img/Nikita.png')},
         {id: 2, name: 'Masha', ava: require('../img/Masha.png')},
         {id: 3, name: 'Yuli', ava: require('../img/Yuli.png')},

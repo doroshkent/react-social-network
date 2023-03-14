@@ -3,8 +3,10 @@ import style from './Dialogues.module.css'
 import Dialogue from "./Dialogue/Dialogue";
 import Message from "./Message/Message";
 import {sendMessageActionCreator, updateMessageTextActionCreator} from "../../redux/dialoguesReducer"
+import Button from "../../style/Button";
+import PropTypes from "prop-types";
 
-const Dialogues = ({dialogues: {dialogues, messages, newMessageText}, dispatch}) => {
+const Dialogues = ({dialogues: {dialoguesList, messages, newMessageText}, dispatch}) => {
     let onSendMessageClick = () => {
         dispatch(sendMessageActionCreator());
     }
@@ -17,17 +19,26 @@ const Dialogues = ({dialogues: {dialogues, messages, newMessageText}, dispatch})
     return (
         <div className={style.dialogues}>
             <div className={style.dialogueList}>
-                { dialogues.map( dialogue => <Dialogue dialogue={dialogue}/>) }
+                { dialoguesList.map( dialogue => <Dialogue dialogue={dialogue}/>) }
             </div>
             <div className={style.messageList}>
                 { messages.map( message => <Message message={message}/>) }
                 <textarea className={style.messageTextarea}
                           onChange={ onMessageChange }
                           value={ newMessageText } ></textarea>
-                <button onClick={ onSendMessageClick } className={style.sendMessageButton}>Send message</button>
+                <Button onClick={ onSendMessageClick } className={style.sendMessageButton}>Send message</Button>
             </div>
         </div>
     )
+}
+
+Dialogues.propTypes = {
+    dialogues: PropTypes.shape({
+        dialoguesList: PropTypes.arrayOf(PropTypes.object),
+        messages: PropTypes.arrayOf(PropTypes.object),
+        newMessageText: PropTypes.string
+    }),
+    dispatch: PropTypes.func
 }
 
 export default Dialogues;
