@@ -18,4 +18,5 @@ const FriendsNav = ({friends}) => {
     )
 }
 
+<<<<<<< HEAD
 export default FriendsNav;
