@@ -9,11 +9,11 @@ import DialogueList from "style/Dialogues/DialogueList";
 import MessageList from "style/Dialogues/MessageList";
 
 const Dialogues = ({dialogues: {dialoguesList, messages, newMessageText}, dispatch}) => {
-    let onSendMessageClick = () => {
+    const onSendMessageClick = () => {
         dispatch(sendMessageActionCreator());
     }
 
-    let onMessageChange = (e) => {
+    const onMessageChange = (e) => {
         let message = e.target.value;
         dispatch(updateMessageTextActionCreator(message))
     }

@@ -22,7 +22,7 @@ const initialState = {
 const dialoguesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
-            let message = {
+            const message = {
                 id: 6,
                 messageText: state.newMessageText,
                 isSent: true,
