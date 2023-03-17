@@ -1,21 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from "react";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import Main from "style/Main";
 
-const Template = ({sidebar, children}) => (
+const Template = ({children}) => (
     <>
         <Header/>
-        <Navbar sidebar={sidebar}/>
+        <Navbar />
         <Main>
             {children}
         </Main>
     </>
 )
-
-Template.propTypes = {
-    sidebar: PropTypes.object,
-}
 
 export default Template

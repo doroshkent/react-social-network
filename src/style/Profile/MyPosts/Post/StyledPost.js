@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledPost = styled.div`
-  color: cornflowerblue;
+  color: #324a59;
 `
 
 export default StyledPost

@@ -1,20 +1,16 @@
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PropTypes from "prop-types";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({profile: {myPosts}, dispatch}) => (
+const Profile = () => (
     <div>
         <ProfileInfo/>
-        <MyPosts myPosts={myPosts}
-                 dispatch={dispatch}/>
+        <MyPostsContainer />
     </div>
 )
 
-Profile.propTypes = {
-    profile: PropTypes.shape({
-        myPosts: PropTypes.object
-    }),
-    dispatch: PropTypes.func
-}
+/*Profile.propTypes = {
+    store: PropTypes.object
+}*/
 
 export default Profile;

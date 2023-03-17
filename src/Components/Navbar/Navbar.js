@@ -1,11 +1,10 @@
-import PropTypes from "prop-types";
-import FriendsNav from "./FriendsNav/FriendsNav";
 import Nav from "style/Navbar/Nav";
 import NavList from "style/Navbar/NavList";
 import NavbarNavLink from "style/Navbar/NavbarNavLink";
 import NavListItem from "style/Navbar/NavListItem";
+import FriendsNavContainer from "./FriendsNav/FriendsNavContainer";
 
-const Navbar = ({sidebar: {friends}}) => (
+const Navbar = () => (
     <Nav>
         <NavList>
             <NavListItem>
@@ -25,16 +24,10 @@ const Navbar = ({sidebar: {friends}}) => (
             </NavListItem>
             <NavListItem>
                 <NavbarNavLink to='/friends'>Friends</NavbarNavLink>
-                <FriendsNav friends={friends}/>
+                <FriendsNavContainer />
             </NavListItem>
         </NavList>
     </Nav>
 )
-
-Navbar.propTypes = {
-    sidebar: PropTypes.shape({
-        friends: PropTypes.array
-    })
-}
 
 export default Navbar;

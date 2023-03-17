@@ -8,14 +8,14 @@ import StyledDialogues from "style/Dialogues/StyledDialogues";
 import DialogueList from "style/Dialogues/DialogueList";
 import MessageList from "style/Dialogues/MessageList";
 
-const Dialogues = ({dialogues: {dialoguesList, messages, newMessageText}, dispatch}) => {
+const Dialogues = ({dialogues: {dialoguesList, messages, newMessageText}, sendMessage, updateMessageText}) => {
     const onSendMessageClick = () => {
-        dispatch(sendMessageActionCreator());
+        sendMessage();
     }
 
     const onMessageChange = (e) => {
-        let message = e.target.value;
-        dispatch(updateMessageTextActionCreator(message))
+        const message = e.target.value;
+        updateMessageText(message);
     }
 
     return (
@@ -39,7 +39,8 @@ Dialogues.propTypes = {
         messages: PropTypes.arrayOf(PropTypes.object),
         newMessageText: PropTypes.string
     }),
-    dispatch: PropTypes.func
+    sendMessage: PropTypes.func,
+    updateMessageText: PropTypes.func
 }
 
 export default Dialogues;

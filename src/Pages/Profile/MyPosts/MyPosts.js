@@ -1,18 +1,17 @@
-import Post from "./Post/Post";
-import {addPostActionCreator, updatePostTextActionCreator} from "redux/profileReducer";
 import Button from "style/Button";
 import PropTypes from "prop-types";
 import Textarea from "style/Textarea";
 import PostsBlock from "style/Profile/MyPosts/PostsBlock";
+import Post from "./Post/Post";
 
-const MyPosts = ({myPosts: {posts, newPostText}, dispatch}) => {
-    const addPost = () => {
-        dispatch(addPostActionCreator());
+const MyPosts = ({myPosts: {posts, newPostText}, updateNewPostText, addPost}) => {
+    const onAddPost = () => {
+       addPost();
     }
 
     const onPostChange = (e) => {
         const text = e.target.value;
-        dispatch( updatePostTextActionCreator(text) );
+        updateNewPostText( text );
     }
 
     return (
@@ -20,10 +19,10 @@ const MyPosts = ({myPosts: {posts, newPostText}, dispatch}) => {
             <h2>My posts</h2>
             <div>
                 <div>
-                    <Textarea onChange={ onPostChange } value={newPostText} />
+                    <Textarea onChange={ onPostChange } value={ newPostText } />
                 </div>
                 <div>
-                    <Button onClick={ addPost }>Add post</Button>
+                    <Button onClick={ onAddPost } disabled={ !newPostText }>Add post</Button>
                 </div>
             </div>
             <div>
@@ -38,7 +37,8 @@ MyPosts.propTypes = {
         posts: PropTypes.arrayOf(PropTypes.object),
         newPostText: PropTypes.string
     }),
-    dispatch: PropTypes.func
+    updateNewPostText: PropTypes.func,
+    addPost: PropTypes.func
 }
 
 
