@@ -22,17 +22,21 @@ const initialState = {
 const dialoguesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
-            const message = {
+            const newMessage = {
                 id: 6,
                 messageText: state.newMessageText,
                 isSent: true,
             };
-            state.messages.push(message);
-            state.newMessageText = '';
-            return state;
+            return {
+                ...state,
+                messages: [...state.messages, newMessage],
+                newMessageText: ''
+            };
         case UPDATE_MESSAGE_TEXT:
-            state.newMessageText = action.newMessage;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.newMessage
+            };
         default:
             return state;
     }
