@@ -1,6 +1,6 @@
+import React from "react";
 import Dialogue from "./Dialogue/Dialogue";
 import Message from "./Message/Message";
-import {sendMessageActionCreator, updateMessageTextActionCreator} from "redux/dialoguesReducer"
 import Button from "style/Button";
 import PropTypes from "prop-types";
 import Textarea from "style/Textarea";

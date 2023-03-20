@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import StyledDialogue from "style/Dialogues/Dialogue/StyledDialogue";
 import DialogueNavLink from "style/Dialogues/Dialogue/DialogueNavLink";

@@ -1,3 +1,4 @@
+import React from "react";
 import Friend from "./Friend/Friend";
 import PropTypes from "prop-types";
 import FriendsSidebar from "style/Navbar/FriendsNav/FriendsSidebar";

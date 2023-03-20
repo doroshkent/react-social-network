@@ -1,3 +1,4 @@
+import React from "react";
 import Nav from "style/Navbar/Nav";
 import NavList from "style/Navbar/NavList";
 import NavbarNavLink from "style/Navbar/NavbarNavLink";
@@ -20,11 +21,11 @@ const Navbar = () => (
                 <NavbarNavLink to='/music'>Music</NavbarNavLink>
             </NavListItem>
             <NavListItem>
-                <NavbarNavLink to='/settings'>Settings</NavbarNavLink>
-            </NavListItem>
-            <NavListItem>
                 <NavbarNavLink to='/friends'>Friends</NavbarNavLink>
                 <FriendsNavContainer />
+            </NavListItem>
+            <NavListItem>
+                <NavbarNavLink to='/settings'>Settings</NavbarNavLink>
             </NavListItem>
         </NavList>
     </Nav>

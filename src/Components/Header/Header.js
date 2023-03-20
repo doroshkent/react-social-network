@@ -1,3 +1,4 @@
+import React from "react";
 import StyledHeader from "style/Header/StyledHeader";
 import HeaderLogo from "style/Header/HeaderLogo";
 

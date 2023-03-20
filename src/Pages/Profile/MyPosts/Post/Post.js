@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import StyledPost from "style/Profile/MyPosts/Post/StyledPost";
 import PostPhoto from "style/Profile/MyPosts/Post/PostPhoto";
