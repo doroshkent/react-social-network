@@ -5,6 +5,6 @@ const mapStateToProps = (state) => ({
   friends: state.sidebar.friends,
 });
 
-const FriendsNavContainer = connect(mapStateToProps)(FriendsNav)
+const FriendsNavContainer = connect(mapStateToProps)(FriendsNav);
 
 export default FriendsNavContainer;

@@ -5,6 +5,6 @@ const DialoguePhoto = styled.img`
   width: 70px;
   height: 70px;
   vertical-align: middle;
-`
+`;
 
-export default DialoguePhoto
+export default DialoguePhoto;

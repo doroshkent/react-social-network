@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const DialogueNavLink = styled(NavLink)`
   color: dodgerblue;
@@ -7,6 +7,6 @@ const DialogueNavLink = styled(NavLink)`
   &.active {
     color: #324a59;
   }
-`
+`;
 
-export default DialogueNavLink
+export default DialogueNavLink;

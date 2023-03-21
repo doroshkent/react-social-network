@@ -5,5 +5,6 @@ const StyledDialogues = styled.div`
   padding: 0;
   display: grid;
   grid-template-columns: 350px 500px;
-`
-export default StyledDialogues
+`;
+
+export default StyledDialogues;

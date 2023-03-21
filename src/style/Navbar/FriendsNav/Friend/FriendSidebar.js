@@ -7,6 +7,6 @@ const FriendSidebar = styled.div`
   display: inline-block;
   text-align: center;
   width: 60px;
-`
+`;
 
-export default FriendSidebar
+export default FriendSidebar;

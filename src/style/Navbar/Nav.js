@@ -6,6 +6,6 @@ const Nav = styled.nav`
   padding: 20px;
   font-size: 23px;
   line-height: 170%;
-`
+`;
 
-export default Nav
+export default Nav;

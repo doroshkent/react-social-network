@@ -6,6 +6,6 @@ const StyledDialogue = styled.div`
   font-size: 22px;
   color: dodgerblue;
   text-decoration: none;
-`
+`;
 
-export default StyledDialogue
+export default StyledDialogue;

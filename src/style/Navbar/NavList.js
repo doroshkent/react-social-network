@@ -7,6 +7,6 @@ const NavList = styled.ul`
   flex-direction: column;
   text-align: left;
   font-size: larger;
-`
+`;
 
-export default NavList
+export default NavList;

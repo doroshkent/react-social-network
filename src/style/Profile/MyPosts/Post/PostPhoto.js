@@ -6,6 +6,6 @@ const PostPhoto = styled.img`
   border-radius: 50%;
   margin: 5px;
   vertical-align: middle;
-`
+`;
 
-export default PostPhoto
+export default PostPhoto;
