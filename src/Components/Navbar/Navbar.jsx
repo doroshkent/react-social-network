@@ -26,6 +26,9 @@ function Navbar() {
           <FriendsNavContainer />
         </NavListItem>
         <NavListItem>
+          <NavbarNavLink to="/users">Users</NavbarNavLink>
+        </NavListItem>
+        <NavListItem>
           <NavbarNavLink to="/settings">Settings</NavbarNavLink>
         </NavListItem>
       </NavList>

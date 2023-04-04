@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["airbnb", "prettier"],
+  //extends: ["airbnb", "prettier"],
   overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: ["prettier"],
   rules: {
-    "prettier/prettier": "warn",
+    "prettier/prettier": 2,
   },
   settings: {
     "import/resolver": {
