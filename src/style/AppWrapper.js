@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const AppWrapper = styled.div`
   display: grid;
-  max-width: 1500px;
+  max-width: 1300px;
   margin: auto;
   grid-template-rows: 90px 1fr;
   grid-template-columns: 230px 1fr;
