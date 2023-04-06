@@ -1,5 +1,5 @@
-const SEND_MESSAGE = "SEND-MESSAGE";
-const UPDATE_MESSAGE_TEXT = "UPDATE-MESSAGE-TEXT";
+const SEND_MESSAGE = "SEND_MESSAGE";
+const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
 
 const initialState = {
   dialoguesList: [

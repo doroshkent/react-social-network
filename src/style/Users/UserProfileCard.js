@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FriendProfileCard = styled.div`
+const UserProfileCard = styled.div`
   display: flex;
   width: 950px;
   margin: 15px;
@@ -9,4 +9,4 @@ const FriendProfileCard = styled.div`
   border-radius: 5px;
 `;
 
-export default FriendProfileCard;
+export default UserProfileCard;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FriendCardDetailsContainer = styled.div`
+const UserCardDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,4 +9,4 @@ const FriendCardDetailsContainer = styled.div`
   width: 100%;
 `;
 
-export default FriendCardDetailsContainer;
+export default UserCardDetailsContainer;
