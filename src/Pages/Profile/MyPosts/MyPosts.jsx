@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "style/Button";
+import Button from "style/Template/Button";
 import PropTypes from "prop-types";
-import Textarea from "style/Textarea";
+import Textarea from "style/Template/Textarea";
 import PostsBlock from "style/Profile/MyPosts/PostsBlock";
 import Post from "./Post/Post";
 

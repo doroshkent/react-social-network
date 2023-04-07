@@ -6,7 +6,7 @@ import UserProfileCard from "style/Users/UserProfileCard";
 import UserPhotoContainer from "style/Users/UserPhotoContainer";
 import UserPhoto from "style/Users/UserPhoto";
 import userImg from "img/user.png";
-import Button from "style/Button";
+import Button from "style/Template/Button";
 import UserCardDetailsContainer from "style/Users/UserCardDetailsContainer";
 import UserFullName from "style/Users/UserFullName";
 import UserStatus from "style/Users/UserStatus";

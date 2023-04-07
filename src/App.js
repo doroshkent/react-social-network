@@ -5,7 +5,7 @@ import Music from "Pages/Music/Music";
 import News from "Pages/News/News";
 import Settings from "Pages/Settings/Settings";
 import Template from "Components/Template/Template";
-import AppWrapper from "style/AppWrapper";
+import AppWrapper from "style/Template/AppWrapper";
 import DialoguesContainer from "./Pages/Dialogues/DialoguesContainer";
 import UsersContainer from "./Pages/Users/UsersContainer";
 
