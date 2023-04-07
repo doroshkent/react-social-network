@@ -42,11 +42,11 @@ const dialoguesReducer = (state = initialState, action) => {
   }
 };
 
-export const sendMessageActionCreator = () => ({
+export const sendMessage= () => ({
   type: SEND_MESSAGE,
 });
 
-export const updateMessageTextActionCreator = (text) => ({
+export const updateMessageText = (text) => ({
   type: UPDATE_MESSAGE_TEXT,
   newMessage: text,
 });
