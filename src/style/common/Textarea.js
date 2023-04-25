@@ -6,7 +6,7 @@ const Textarea = styled.textarea`
   border-radius: 3px;
   box-shadow: none;
   color: #24292e;
-  font-family: "Tilt Neon", cursive;
+  font-family: "Comfortaa";
   font-size: 16px;
   line-height: 20px;
   padding: 8px 12px;

@@ -1,13 +1,13 @@
 import React from "react";
-import Button from "style/Template/Button";
+import Button from "style/common/Button";
 import PropTypes from "prop-types";
-import Textarea from "style/Template/Textarea";
+import Textarea from "style/common/Textarea";
 import PostsBlock from "style/Profile/MyPosts/PostsBlock";
 import Post from "./Post/Post";
 
 function MyPosts({
   myPosts: { posts, newPostText },
-  updateNewPostText,
+  updatePostText,
   addPost,
 }) {
   const onAddPost = () => {
@@ -16,7 +16,7 @@ function MyPosts({
 
   const onPostChange = (e) => {
     const text = e.target.value;
-    updateNewPostText(text);
+    updatePostText(text);
   };
 
   return (
@@ -35,7 +35,7 @@ function MyPosts({
       <div>
         {posts.map((post) => (
           <Post post={post} />
-        ))}
+        )).reverse()}
       </div>
     </PostsBlock>
   );

@@ -5,7 +5,7 @@ import DialogueNavLink from "style/Dialogues/Dialogue/DialogueNavLink";
 import DialoguePhoto from "style/Dialogues/Dialogue/DialoguePhoto";
 
 function Dialogue({ dialogue: { id, name, ava } }) {
-  const path = ` /${id}`;
+  const path = `./${id}`;
 
   return (
     <StyledDialogue>

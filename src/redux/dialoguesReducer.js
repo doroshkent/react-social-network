@@ -3,11 +3,11 @@ const UPDATE_MESSAGE_TEXT = "UPDATE_MESSAGE_TEXT";
 
 const initialState = {
   dialoguesList: [
-    { id: 1, name: "Nikita", ava: require("../img/Nikita.png") },
-    { id: 2, name: "Masha", ava: require("../img/Masha.png") },
-    { id: 3, name: "Yuli", ava: require("../img/Yuli.png") },
-    { id: 4, name: "Olga", ava: require("../img/Olga.png") },
-    { id: 5, name: "Pan", ava: require("../img/Pan.png") },
+    { id: 1, name: "Nikita", ava: require("../assets/img/Nikita.png") },
+    { id: 2, name: "Masha", ava: require("../assets/img/Masha.png") },
+    { id: 3, name: "Yuli", ava: require("../assets/img/Yuli.png") },
+    { id: 4, name: "Olga", ava: require("../assets/img/Olga.png") },
+    { id: 5, name: "Pan", ava: require("../assets/img/Pan.png") },
   ],
   messages: [
     { id: 1, messageText: "Hi!", isSent: false },
@@ -22,7 +22,7 @@ const initialState = {
 const dialoguesReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
-      const newMessage = {
+      let newMessage = {
         id: 6,
         messageText: state.newMessageText,
         isSent: true,

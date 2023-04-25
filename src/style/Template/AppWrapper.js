@@ -9,7 +9,7 @@ const AppWrapper = styled.div`
   grid-template-areas:
     "header header"
     "nav content";
-  font-family: "Tilt Neon", cursive;
+  font-family: "Comfortaa";
 `;
 
 export default AppWrapper;

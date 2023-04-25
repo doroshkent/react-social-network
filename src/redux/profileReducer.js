@@ -1,14 +1,14 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_POST_TEXT = "UPDATE_POST_TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 const initialState = {
-  profileInfo: "Anastasiya",
+  profileInfo: null,
   myPosts: {
     posts: [
-      { id: 0, message: "Whazzaaap", likesCount: 14 },
-      { id: 1, message: "This post was made by props", likesCount: 16 },
-      { id: 2, message: "My first post", likesCount: 143 },
-      { id: 3, message: "Joke, that's one is first", likesCount: 14 },
+      { id: 1, message: "My first post", likesCount: 143 },
+      { id: 2, message: "This post was made by props", likesCount: 16 },
+      { id: 3, message: "Вернула стену вместо Дурова", likesCount: 14 },
     ],
     newPostText: "",
   },
@@ -17,7 +17,7 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
-      const newPost = {
+      let newPost = {
         id: 5,
         message: state.myPosts.newPostText,
         likesCount: 0,
@@ -38,6 +38,11 @@ const profileReducer = (state = initialState, action) => {
           newPostText: action.newText,
         },
       };
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profileInfo: action.profileInfo,
+      }
     default:
       return state;
   }
@@ -46,10 +51,13 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = () => ({
   type: ADD_POST,
 });
-
 export const updatePostText = (text) => ({
   type: UPDATE_POST_TEXT,
   newText: text,
 });
+export const setUserProfile = (profileInfo) => ({
+  type: SET_USER_PROFILE,
+  profileInfo,
+})
 
 export default profileReducer;

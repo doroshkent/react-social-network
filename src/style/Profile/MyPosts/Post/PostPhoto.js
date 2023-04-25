@@ -1,11 +1,10 @@
 import styled from "styled-components";
+import ProfilePhoto from "../../ProfileInfo/ProfilePhoto";
 
-const PostPhoto = styled.img`
+const PostPhoto = styled(ProfilePhoto)`
   height: 70px;
   width: 70px;
-  border-radius: 50%;
   margin: 5px;
-  vertical-align: middle;
 `;
 
 export default PostPhoto;

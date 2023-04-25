@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const PostsBlock = styled.div`
-  padding: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
   line-height: 150%;
 `;
 

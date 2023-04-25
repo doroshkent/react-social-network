@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ava from "img/ava.png";
+import ava from "assets/img/ava.png";
 import StyledPost from "style/Profile/MyPosts/Post/StyledPost";
 import PostPhoto from "style/Profile/MyPosts/Post/PostPhoto";
 

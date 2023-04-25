@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import ProfilePhoto from "../Profile/ProfileInfo/ProfilePhoto";
 
-const UserPhoto = styled.img`
+const UserPhoto = styled(ProfilePhoto)`
   width: 80px;
-  align-self: center;
-  margin-bottom: 10px;
+  height: auto;
 `;
 
 export default UserPhoto;

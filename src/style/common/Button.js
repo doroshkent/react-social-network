@@ -5,7 +5,6 @@ const Button = styled.button`
   border-radius: 3px;
   border: 1px solid #7aa7c7;
   color: white;
-  font-family: "Tilt Neon", cursive;
   font-size: 17px;
   font-weight: 400;
   line-height: 130%;
