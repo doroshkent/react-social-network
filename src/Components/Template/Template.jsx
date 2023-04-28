@@ -1,12 +1,12 @@
 import React from "react";
 import Main from "style/Template/Main";
-import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
+import HeaderContainer from "../Header/HeaderContainer";
 
 function Template({ children }) {
   return (
     <>
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <Main>{children}</Main>
     </>

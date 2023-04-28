@@ -1,8 +1,8 @@
-import Bold from "assets/fonts/Unbounded/Unbounded-Bold.ttf"
-import ExtraBold from "assets/fonts/Unbounded/Unbounded-ExtraBold.ttf"
-import ExtraLight from "assets/fonts/Unbounded/Unbounded-ExtraLight.ttf"
-import Light from "assets/fonts/Unbounded/Unbounded-Light.ttf"
-import Regular from "assets/fonts/Unbounded/Unbounded-Regular.ttf"
+import Bold from "assets/fonts/Unbounded/Unbounded-Bold.ttf";
+import ExtraBold from "assets/fonts/Unbounded/Unbounded-ExtraBold.ttf";
+import ExtraLight from "assets/fonts/Unbounded/Unbounded-ExtraLight.ttf";
+import Light from "assets/fonts/Unbounded/Unbounded-Light.ttf";
+import Regular from "assets/fonts/Unbounded/Unbounded-Regular.ttf";
 import Black from "assets/fonts/Unbounded/Unbounded-Black.ttf";
 import Medium from "assets/fonts/Unbounded/Unbounded-Medium.ttf";
 import SemiBold from "assets/fonts/Unbounded/Unbounded-SemiBold.ttf";
@@ -15,5 +15,5 @@ const GlobalFonts = createGlobalStyle`
     font-family: Comfortaa;
     src: url(${Comfortaa}) format('truetype');
   }
-`
+`;
 export default GlobalFonts;

@@ -10,8 +10,9 @@ import ProfileContainer from "Pages/Profile/ProfileContainer";
 function Router() {
   return (
     <Routes>
-      <Route path="/profile/:userId" element={<ProfileContainer/>}/>
-      <Route path="/profile/" element={<ProfileContainer/>}/>
+      <Route path="/profile" element={<ProfileContainer />}>
+        <Route path=":userId" element={<ProfileContainer />} />
+      </Route>
       <Route path="/dialogues/*" element={<DialoguesContainer />} />
       <Route path="/music" element={<Music />} />
       <Route path="/news" element={<News />} />

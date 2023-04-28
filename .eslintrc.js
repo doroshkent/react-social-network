@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: ["prettier"],
   rules: {
-    "prettier/prettier": 0,
+    "prettier/prettier": 2,
   },
   settings: {
     "import/resolver": {

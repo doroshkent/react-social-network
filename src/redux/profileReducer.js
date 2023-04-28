@@ -42,7 +42,7 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profileInfo: action.profileInfo,
-      }
+      };
     default:
       return state;
   }
@@ -58,6 +58,6 @@ export const updatePostText = (text) => ({
 export const setUserProfile = (profileInfo) => ({
   type: SET_USER_PROFILE,
   profileInfo,
-})
+});
 
 export default profileReducer;

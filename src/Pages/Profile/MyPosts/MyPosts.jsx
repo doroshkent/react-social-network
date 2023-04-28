@@ -5,11 +5,7 @@ import Textarea from "style/common/Textarea";
 import PostsBlock from "style/Profile/MyPosts/PostsBlock";
 import Post from "./Post/Post";
 
-function MyPosts({
-  myPosts: { posts, newPostText },
-  updatePostText,
-  addPost,
-}) {
+function MyPosts({ myPosts: { posts, newPostText }, updatePostText, addPost }) {
   const onAddPost = () => {
     addPost();
   };
@@ -32,11 +28,7 @@ function MyPosts({
           </Button>
         </div>
       </div>
-      <div>
-        {posts.map((post) => (
-          <Post post={post} />
-        )).reverse()}
-      </div>
+      <div>{posts.map((post) => <Post post={post} />).reverse()}</div>
     </PostsBlock>
   );
 }

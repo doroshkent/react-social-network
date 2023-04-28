@@ -2,29 +2,20 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import {setUserProfile} from "redux/profileReducer";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import { setUserProfile } from "redux/profileReducer";
+import { useParams } from "react-router-dom";
 
-function withRouter(Component) {
-  function ComponentWithRouterProp(props) {
-    let location = useLocation();
-    let navigate = useNavigate();
-    let params = useParams();
-    return (
-      <Component
-        {...props}
-        router={{ location, navigate, params }}
-      />
-    );
-  }
-
-  return ComponentWithRouterProp;
+function withRouter(Children) {
+  return (props) => {
+    const match = { params: useParams() };
+    return <Children {...props} match={match} />;
+  };
 }
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    debugger
-    let userId = this.props.router.params.userId;
+    debugger;
+    let userId = this.props.match.params.userId;
     if (!userId) {
       userId = 2;
     }
@@ -36,12 +27,14 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return <Profile profile={this.props.profileInfo}/>;
+    return <Profile {...this.props} profile={this.props.profile} />;
   }
 }
 
 const mapStateToProps = (state) => ({
-  profileInfo: state.profilePage.profileInfo,
+  profile: state.profilePage.profileInfo,
 });
 
-export default connect(mapStateToProps, {setUserProfile})(withRouter(ProfileContainer));
+export default connect(mapStateToProps, { setUserProfile })(
+  withRouter(ProfileContainer)
+);
