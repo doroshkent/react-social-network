@@ -13,6 +13,7 @@ import UserStatus from "style/Users/UserStatus";
 import UserLocation from "style/Users/UserLocation";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { userApi } from "api/api";
 
 function Users({
   userCount,
@@ -57,15 +58,35 @@ function Users({
       {users.map((user) => (
         <UserProfileCard key={user.id}>
           <UserPhotoContainer>
-            <NavLink to={`./../profile/${user.id}`}>
+            <NavLink to={`/profile/${user.id}`}>
               <UserPhoto
                 src={user.photos.small ? user.photos.small : userImg}
               />
             </NavLink>
             {user.followed ? (
-              <Button onClick={() => unfollow(user.id)}>Unfollow</Button>
+              <Button
+                onClick={() =>
+                  userApi.unfollow(user.id).then((data) => {
+                    if (data.resultCode === 0) {
+                      unfollow(user.id);
+                    }
+                  })
+                }
+              >
+                Unfollow
+              </Button>
             ) : (
-              <Button onClick={() => follow(user.id)}>Follow</Button>
+              <Button
+                onClick={() =>
+                  userApi.follow(user.id).then((data) => {
+                    if (data.resultCode === 0) {
+                      follow(user.id);
+                    }
+                  })
+                }
+              >
+                Follow
+              </Button>
             )}
           </UserPhotoContainer>
           <UserCardDetailsContainer>
