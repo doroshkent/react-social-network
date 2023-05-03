@@ -33,3 +33,9 @@ export const profileApi = {
       .then((response) => response.data);
   },
 };
+
+export const authApi = {
+  checkAuth() {
+    return axiosInstance.get("auth/me").then((response) => response.data);
+  },
+};

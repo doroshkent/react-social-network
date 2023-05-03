@@ -13,7 +13,6 @@ import UserStatus from "style/Users/UserStatus";
 import UserLocation from "style/Users/UserLocation";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import { userApi } from "api/api";
 
 function Users({
   userCount,
@@ -24,7 +23,6 @@ function Users({
   follow,
   unfollow,
   followingInProgress,
-  toggleFollowingProgress,
 }) {
   const pagesCount = Math.ceil(userCount / pageSize);
 
@@ -47,13 +45,7 @@ function Users({
             return <ActivePageNumber>{page}</ActivePageNumber>;
           }
           return (
-            <PageNumber
-              onClick={() => {
-                onPageChange(page);
-              }}
-            >
-              {page}
-            </PageNumber>
+            <PageNumber onClick={() => onPageChange(page)}>{page}</PageNumber>
           );
         })}
       </Pagination>
@@ -68,30 +60,14 @@ function Users({
             {user.followed ? (
               <Button
                 disabled={followingInProgress.some((id) => id === user.id)}
-                onClick={() => {
-                  toggleFollowingProgress(true, user.id);
-                  userApi.unfollow(user.id).then((data) => {
-                    if (data.resultCode === 0) {
-                      unfollow(user.id);
-                    }
-                    toggleFollowingProgress(false, user.id);
-                  });
-                }}
+                onClick={() => unfollow(user.id)}
               >
                 Unfollow
               </Button>
             ) : (
               <Button
                 disabled={followingInProgress.some((id) => id === user.id)}
-                onClick={() => {
-                  toggleFollowingProgress(true, user.id);
-                  userApi.follow(user.id).then((data) => {
-                    if (data.resultCode === 0) {
-                      follow(user.id);
-                    }
-                    toggleFollowingProgress(false, user.id);
-                  });
-                }}
+                onClick={() => follow(user.id)}
               >
                 Follow
               </Button>
