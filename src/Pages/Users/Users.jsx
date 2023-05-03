@@ -23,6 +23,8 @@ function Users({
   users,
   follow,
   unfollow,
+  followingInProgress,
+  toggleFollowingProgress,
 }) {
   const pagesCount = Math.ceil(userCount / pageSize);
 
@@ -65,25 +67,31 @@ function Users({
             </NavLink>
             {user.followed ? (
               <Button
-                onClick={() =>
+                disabled={followingInProgress.some((id) => id === user.id)}
+                onClick={() => {
+                  toggleFollowingProgress(true, user.id);
                   userApi.unfollow(user.id).then((data) => {
                     if (data.resultCode === 0) {
                       unfollow(user.id);
                     }
-                  })
-                }
+                    toggleFollowingProgress(false, user.id);
+                  });
+                }}
               >
                 Unfollow
               </Button>
             ) : (
               <Button
-                onClick={() =>
+                disabled={followingInProgress.some((id) => id === user.id)}
+                onClick={() => {
+                  toggleFollowingProgress(true, user.id);
                   userApi.follow(user.id).then((data) => {
                     if (data.resultCode === 0) {
                       follow(user.id);
                     }
-                  })
-                }
+                    toggleFollowingProgress(false, user.id);
+                  });
+                }}
               >
                 Follow
               </Button>
