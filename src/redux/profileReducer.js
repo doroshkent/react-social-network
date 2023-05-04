@@ -64,9 +64,6 @@ export const setUserProfile = (profileInfo) => ({
 
 export const getProfile = (userId) => {
   return (dispatch) => {
-    if (!userId) {
-      userId = 2;
-    }
     profileApi.getUserProfile(userId).then((data) => {
       dispatch(setUserProfile(data));
     });

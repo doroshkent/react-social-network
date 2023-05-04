@@ -4,6 +4,7 @@ import Dialogues from "./Dialogues";
 
 const mapStateToProps = (state) => ({
   dialogues: state.dialoguesPage,
+  isAuth: state.auth.isAuth,
 });
 
 const DialoguesContainer = connect(mapStateToProps, {

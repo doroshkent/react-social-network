@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import React from "react";
-import DialoguesContainer from "Pages/Dialogues/DialoguesContainer";
-import Music from "Pages/Music/Music";
-import News from "Pages/News/News";
-import UsersContainer from "Pages/Users/UsersContainer";
-import Settings from "Pages/Settings/Settings";
-import ProfileContainer from "Pages/Profile/ProfileContainer";
+import DialoguesContainer from "pages/Dialogues/DialoguesContainer";
+import Music from "pages/Music/Music";
+import News from "pages/News/News";
+import UsersContainer from "pages/Users/UsersContainer";
+import Settings from "pages/Settings/Settings";
+import ProfileContainer from "pages/Profile/ProfileContainer";
+import Login from "pages/Login/Login";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/news" element={<News />} />
       <Route path="/users" element={<UsersContainer />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
