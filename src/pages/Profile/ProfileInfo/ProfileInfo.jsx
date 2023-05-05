@@ -1,6 +1,5 @@
 import React from "react";
 import ProfileDescription from "style/Profile/ProfileInfo/ProfileDescription";
-import ProfileCoverPhoto from "style/Profile/ProfileInfo/ProfileCoverPhoto";
 import Preloader from "Components/common/Preloader";
 import UserStatus from "style/Users/UserStatus";
 import ProfilePhoto from "style/Profile/ProfileInfo/ProfilePhoto";
@@ -18,9 +17,6 @@ function ProfileInfo({ profile }) {
 
   return (
     <div>
-      <div>
-        <ProfileCoverPhoto src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" />
-      </div>
       <ProfileDescription>
         <h1>
           {profile.photos.large && <ProfilePhoto src={profile.photos.large} />}

@@ -7,11 +7,9 @@ import DialogueList from "style/Dialogues/DialogueList";
 import MessageList from "style/Dialogues/MessageList";
 import Message from "./Message/Message";
 import Dialogue from "./Dialogue/Dialogue";
-import { Navigate } from "react-router-dom";
 
 function Dialogues({
   dialogues: { dialoguesList, messages, newMessageText },
-  isAuth,
   sendMessage,
   updateMessageText,
 }) {
@@ -23,8 +21,6 @@ function Dialogues({
     const message = e.target.value;
     updateMessageText(message);
   };
-
-  if (!isAuth) return <Navigate to="/login" />;
 
   return (
     <StyledDialogues>
