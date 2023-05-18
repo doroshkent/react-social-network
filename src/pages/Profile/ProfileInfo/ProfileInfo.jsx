@@ -5,8 +5,9 @@ import UserStatus from "style/Users/UserStatus";
 import ProfilePhoto from "style/Profile/ProfileInfo/ProfilePhoto";
 import jobImage from "assets/img/job.png";
 import UserContacts from "style/Profile/ProfileInfo/UserContacts";
+import Status from "./Status";
 
-function ProfileInfo({ profile }) {
+function ProfileInfo({ profile, status, updateStatus }) {
   if (!profile) {
     return <Preloader />;
   }
@@ -22,18 +23,15 @@ function ProfileInfo({ profile }) {
           {profile.photos.large && <ProfilePhoto src={profile.photos.large} />}
           {profile.fullName}
         </h1>
-        {profile.aboutMe && (
-          <UserStatus display={"inline"}>{profile.aboutMe}</UserStatus>
-        )}
+        <Status status={status} updateStatus={updateStatus} />
         {profile.lookingForAJob && (
           <>
-            <img src={jobImage} height="60px" />
             <UserStatus display={"inline"}>
+              <img src={jobImage} height="60px" />
               {profile.lookingForAJobDescription}
             </UserStatus>
           </>
         )}
-
         {filteredContacts.length > 0 && (
           <>
             <h2>Contacts:</h2>
