@@ -1,33 +1,14 @@
 import React from "react";
-import Button from "style/common/Button";
 import PropTypes from "prop-types";
-import Textarea from "style/common/Textarea";
 import PostsBlock from "style/Profile/MyPosts/PostsBlock";
 import Post from "./Post/Post";
+import NewPostForm from "./NewPostForm";
 
-function MyPosts({ myPosts: { posts, newPostText }, updatePostText, addPost }) {
-  const onAddPost = () => {
-    addPost();
-  };
-
-  const onPostChange = (e) => {
-    const text = e.target.value;
-    updatePostText(text);
-  };
-
+function MyPosts({ myPosts: { posts }, addPost }) {
   return (
     <PostsBlock>
       <h2>My posts</h2>
-      <div>
-        <div>
-          <Textarea onChange={onPostChange} value={newPostText} />
-        </div>
-        <div>
-          <Button onClick={onAddPost} disabled={!newPostText}>
-            Add post
-          </Button>
-        </div>
-      </div>
+      <NewPostForm addPost={addPost} />
       <div>{posts.map((post) => <Post post={post} />).reverse()}</div>
     </PostsBlock>
   );
@@ -36,9 +17,7 @@ function MyPosts({ myPosts: { posts, newPostText }, updatePostText, addPost }) {
 MyPosts.propTypes = {
   myPosts: PropTypes.shape({
     posts: PropTypes.arrayOf(PropTypes.object),
-    newPostText: PropTypes.string,
   }),
-  updateNewPostText: PropTypes.func,
   addPost: PropTypes.func,
 };
 

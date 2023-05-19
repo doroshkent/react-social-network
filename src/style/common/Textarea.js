@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Textarea = styled.textarea`
+  display: block;
   background-color: #f6f8fa;
   border: 1px solid #d1d5da;
   border-radius: 3px;
@@ -9,6 +10,7 @@ const Textarea = styled.textarea`
   font-family: "Comfortaa";
   font-size: 16px;
   line-height: 20px;
+  height: 25px;
   padding: 8px 12px;
   resize: none;
   vertical-align: middle;

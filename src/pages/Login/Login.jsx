@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Input from "../../style/common/Input";
-import Button from "../../style/common/Button";
+import Input from "style/common/Input";
+import Button from "style/common/Button";
 import * as Styled from "style/Login/StyledLogin";
+import Textarea from "../../style/common/Textarea";
 
 function LoginForm() {
   const {
@@ -14,13 +15,11 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        type={"text"}
+      <Textarea
         placeholder={"Email"}
         {...register("Email", { required: true })}
       />
-      <Input
-        type={"text"}
+      <Textarea
         placeholder={"Password"}
         {...register("Password", { required: true })}
       />

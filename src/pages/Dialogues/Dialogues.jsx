@@ -1,27 +1,13 @@
 import React from "react";
-import Button from "style/common/Button";
 import PropTypes from "prop-types";
-import Textarea from "style/common/Textarea";
 import StyledDialogues from "style/Dialogues/StyledDialogues";
 import DialogueList from "style/Dialogues/DialogueList";
 import MessageList from "style/Dialogues/MessageList";
 import Message from "./Message/Message";
 import Dialogue from "./Dialogue/Dialogue";
+import SendMessageForm from "./SendMessageForm";
 
-function Dialogues({
-  dialogues: { dialoguesList, messages, newMessageText },
-  sendMessage,
-  updateMessageText,
-}) {
-  const onSendMessageClick = () => {
-    sendMessage();
-  };
-
-  const onMessageChange = (e) => {
-    const message = e.target.value;
-    updateMessageText(message);
-  };
-
+function Dialogues({ dialogues: { dialoguesList, messages }, sendMessage }) {
   return (
     <StyledDialogues>
       <DialogueList>
@@ -33,10 +19,7 @@ function Dialogues({
         {messages.map((message) => (
           <Message message={message} />
         ))}
-        <Textarea onChange={onMessageChange} value={newMessageText} />
-        <Button onClick={onSendMessageClick} disabled={!newMessageText}>
-          Send message
-        </Button>
+        <SendMessageForm sendMessage={sendMessage} />
       </MessageList>
     </StyledDialogues>
   );
@@ -46,10 +29,8 @@ Dialogues.propTypes = {
   dialogues: PropTypes.shape({
     dialoguesList: PropTypes.arrayOf(PropTypes.object),
     messages: PropTypes.arrayOf(PropTypes.object),
-    newMessageText: PropTypes.string,
   }),
   sendMessage: PropTypes.func,
-  updateMessageText: PropTypes.func,
 };
 
 export default Dialogues;
