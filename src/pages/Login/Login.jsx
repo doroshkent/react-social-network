@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import Input from "style/common/Input";
 import Button from "style/common/Button";
 import * as Styled from "style/Login/StyledLogin";
-import Textarea from "../../style/common/Textarea";
+import Textarea from "style/common/Textarea";
+import { Error } from "style/common/ErrorMessage";
 
 function LoginForm() {
   const {
@@ -17,12 +18,21 @@ function LoginForm() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Textarea
         placeholder={"Email"}
-        {...register("Email", { required: true })}
+        {...register("Email", {
+          required: "Email is required",
+          validate: {
+            matchPattern: (v) =>
+              /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+              "Email address must be a valid address",
+          },
+        })}
       />
+      {errors.Email && <Error>{errors.Email.message}</Error>}
       <Textarea
         placeholder={"Password"}
-        {...register("Password", { required: true })}
+        {...register("Password", { required: "Password is required" })}
       />
+      {errors?.Password?.message && <Error>{errors.Password.message}</Error>}
       <Input
         type="checkbox"
         placeholder="Remember me"
