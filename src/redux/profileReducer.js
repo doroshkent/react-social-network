@@ -1,4 +1,5 @@
 import { profileApi } from "../api/api";
+import { v4 } from "uuid";
 
 const ADD_POST = "ADD_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -20,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       let newPost = {
-        id: 5,
+        id: v4(),
         message: action.postText,
         likesCount: 0,
       };

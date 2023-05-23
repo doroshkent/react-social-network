@@ -17,8 +17,6 @@ function NewPostForm({ addPost }) {
     reset();
   };
 
-  debugger;
-
   return (
     <form onSubmit={handleSubmit(onAddPost)}>
       <Textarea

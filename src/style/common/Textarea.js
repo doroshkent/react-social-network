@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Textarea = styled.textarea`
+const Textarea = styled.input`
   display: block;
   background-color: #f6f8fa;
   border: 1px solid #d1d5da;

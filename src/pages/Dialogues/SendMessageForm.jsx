@@ -26,7 +26,9 @@ function SendMessageForm({ sendMessage }) {
           validate: { maxLength: (v) => v.length < 50 || "Max length is 50" },
         })}
       />
-      {errors?.newMessage?.type === "required" && <Error>{errors.newMessage.message}</Error>}
+      {errors?.newMessage?.type === "required" && (
+        <Error>{errors.newMessage.message}</Error>
+      )}
       {errors?.newMessage?.type === "maxLength" && (
         <Error>{errors.newMessage.message}</Error>
       )}

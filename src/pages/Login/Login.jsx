@@ -5,20 +5,22 @@ import Button from "style/common/Button";
 import * as Styled from "style/Login/StyledLogin";
 import Textarea from "style/common/Textarea";
 import { Error } from "style/common/ErrorMessage";
+import { connect } from "react-redux";
+import { login } from "redux/authReducer";
+import { Navigate } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm({ onSubmit }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Textarea
         placeholder={"Email"}
-        {...register("Email", {
+        {...register("email", {
           required: "Email is required",
           validate: {
             matchPattern: (v) =>
@@ -30,27 +32,37 @@ function LoginForm() {
       {errors.Email && <Error>{errors.Email.message}</Error>}
       <Textarea
         placeholder={"Password"}
-        {...register("Password", { required: "Password is required" })}
+        type={"password"}
+        {...register("password", { required: "Password is required" })}
       />
       {errors?.Password?.message && <Error>{errors.Password.message}</Error>}
       <Input
         type="checkbox"
         placeholder="Remember me"
-        {...register("Remember me", {})}
+        {...register("rememberMe", {})}
       />
-      Remember me <br />
+      Remember me
       <Button>Login</Button>
     </form>
   );
 }
 
-function Login() {
+function Login({ isAuth, login }) {
+  const onSubmit = ({ email, password, rememberMe }) => {
+    login(email, password, rememberMe);
+  };
+
+  if (isAuth) return <Navigate to={"/profile"} />;
+
   return (
     <Styled.Login>
       <h1>Login</h1>
-      <LoginForm />
+      <LoginForm onSubmit={onSubmit} />
     </Styled.Login>
   );
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+export default connect(mapStateToProps, { login })(Login);

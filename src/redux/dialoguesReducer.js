@@ -1,3 +1,5 @@
+import { v4 } from "uuid";
+
 const SEND_MESSAGE = "SEND_MESSAGE";
 
 const initialState = {
@@ -21,7 +23,7 @@ const dialoguesReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       let newMessage = {
-        id: 6,
+        id: v4(),
         messageText: action.message,
         isSent: true,
       };

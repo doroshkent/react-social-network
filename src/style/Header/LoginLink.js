@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const LoginLink = styled(NavLink)`
   color: white;
-  margin-right: 20px;
+  margin-left: auto;
   text-decoration: none;
 `;
 

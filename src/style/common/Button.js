@@ -9,8 +9,7 @@ const Button = styled.button`
   font-size: 17px;
   font-weight: 400;
   line-height: 130%;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px;
   padding: 8px;
   text-align: center;
 
