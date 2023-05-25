@@ -3,7 +3,7 @@ import StyledHeader from "style/Header/StyledHeader";
 import HeaderLogo from "style/Header/HeaderLogo";
 import logo from "assets/img/logo.png";
 import LoginLink from "style/Header/LoginLink";
-import Button from "../../style/common/Button";
+import Button from "style/common/Button";
 
 function Header({isAuth, login, id, logout}) {
   return (
