@@ -5,15 +5,13 @@ import logo from "assets/img/logo.png";
 import LoginLink from "style/Header/LoginLink";
 import Button from "style/common/Button";
 
-function Header({isAuth, login, id, logout}) {
+function Header({ isAuth, login, id, logout }) {
   return (
     <StyledHeader>
-      <HeaderLogo src={logo}/>
+      <HeaderLogo src={logo} />
       {isAuth ? (
         <>
-          <LoginLink to={`/profile/${id}`}>
-            {login}{" "}
-          </LoginLink>
+          <LoginLink to={`/profile/${id}`}>{login}</LoginLink>
           <Button
             onClick={logout}
             style={{

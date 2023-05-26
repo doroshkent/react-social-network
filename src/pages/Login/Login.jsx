@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "style/common/Input";
 import Button from "style/common/Button";
@@ -58,13 +58,12 @@ function LoginForm({ login }) {
 }
 
 function Login({ isAuth, login }) {
-
   if (isAuth) return <Navigate to={"/profile"} />;
 
   return (
     <Styled.Login>
       <h1>Login</h1>
-      <LoginForm login={login}/>
+      <LoginForm login={login} />
     </Styled.Login>
   );
 }
