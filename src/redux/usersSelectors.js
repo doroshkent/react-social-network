@@ -8,7 +8,7 @@ const getUsersSelector = (state) => {
 export const getUsers = createSelector(
   getUsersSelector,
   //getIsFetching,
-  (users, /*isFetching*/) => users.filter((user) => true)
+  (users /*isFetching*/) => users.filter((user) => true)
 );
 
 export const getUserCount = (state) => {

@@ -6,6 +6,7 @@ import ProfilePhoto from "style/Profile/ProfileInfo/ProfilePhoto";
 import jobImage from "assets/img/job.png";
 import UserContacts from "style/Profile/ProfileInfo/UserContacts";
 import Status from "./Status";
+import StatusWithHooks from "./StatusWithHooks";
 
 function ProfileInfo({ profile, status, updateStatus }) {
   if (!profile) {
@@ -23,7 +24,7 @@ function ProfileInfo({ profile, status, updateStatus }) {
           {profile.photos.large && <ProfilePhoto src={profile.photos.large} />}
           {profile.fullName}
         </h1>
-        <Status status={status} updateStatus={updateStatus} />
+        <StatusWithHooks status={status} updateStatus={updateStatus} />
         {profile.lookingForAJob && (
           <>
             <UserStatus display={"inline"}>
