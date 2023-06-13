@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import ava from "assets/img/ava.png";
 import StyledPost from "style/Profile/MyPosts/Post/StyledPost";
 import PostPhoto from "style/Profile/MyPosts/Post/PostPhoto";
+import { MdOutlineDelete } from "react-icons/md";
 
-function Post({ post: { message, likesCount } }) {
+function Post({ post: { message, likesCount, id }, deletePost }) {
   return (
     <StyledPost>
       <PostPhoto src={ava} />
       {message}
       <div>
-        <span>{likesCount} likes</span>
+        <span>{likesCount} likes </span>
+        <MdOutlineDelete onClick={() => deletePost(id)} />
       </div>
     </StyledPost>
   );
@@ -18,6 +20,7 @@ function Post({ post: { message, likesCount } }) {
 
 Post.propTypes = {
   post: PropTypes.shape({
+    id: PropTypes.string,
     message: PropTypes.string,
     likesCount: PropTypes.number,
   }),

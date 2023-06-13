@@ -4,12 +4,16 @@ import PostsBlock from "style/Profile/MyPosts/PostsBlock";
 import Post from "./Post/Post";
 import NewPostForm from "./NewPostForm";
 
-function MyPosts({ myPosts: { posts }, addPost }) {
+function MyPosts({ myPosts: { posts }, addPost, deletePost }) {
   return (
     <PostsBlock>
       <h2>My posts</h2>
       <NewPostForm addPost={addPost} />
-      <div>{posts.map((post) => <Post post={post} />).reverse()}</div>
+      <div>
+        {[...posts].reverse().map((post) => (
+          <Post post={post} deletePost={deletePost} />
+        ))}
+      </div>
     </PostsBlock>
   );
 }

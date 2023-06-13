@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 const ADD_POST = "ADD_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
+const DELETE_POST = "DELETE_POST";
 
 const initialState = {
   profileInfo: null,
@@ -42,6 +43,16 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status,
       };
+    case DELETE_POST:
+      return {
+        ...state,
+        myPosts: {
+          ...state.myPosts,
+          posts: state.myPosts.posts.filter(
+            (post) => post.id !== action.postId
+          ),
+        },
+      };
     default:
       return state;
   }
@@ -58,6 +69,10 @@ const setUserProfile = (profileInfo) => ({
 const setUserStatus = (status) => ({
   type: SET_USER_STATUS,
   status,
+});
+export const deletePost = (postId) => ({
+  type: DELETE_POST,
+  postId,
 });
 
 export const getProfile = (userId) => (dispatch) => {
