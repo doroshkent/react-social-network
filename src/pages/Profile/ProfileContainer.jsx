@@ -1,35 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, {useEffect} from "react";
+import {connect} from "react-redux";
 import Profile from "./Profile";
-import { getProfile, getStatus, updateStatus } from "redux/profileReducer";
-import { useParams } from "react-router-dom";
-import { compose } from "redux";
+import {getProfile, getStatus, updateStatus} from "redux/profileReducer";
+import {useParams} from "react-router-dom";
+import {compose} from "redux";
 
 function withRouter(Children) {
   return (props) => {
-    const match = { params: useParams() };
-    return <Children {...props} match={match} />;
+    const match = {params: useParams()};
+    return <Children {...props} match={match}/>;
   };
 }
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    let userId = this.props.match.params.userId;
+function ProfileContainer({match, authorizedUserId, getProfile, getStatus, ...props}) {
+  useEffect(() => {
+    let userId = match.params.userId;
     if (!userId) {
-      userId = this.props.authorizedUserId;
-      //commented method was questionable from the very beginning, now it doesn't work at all;
-      /*if (!userId) {
-        const {history} = this.props;
-        history.push("/login");
-      }*/
+      userId = authorizedUserId;
     }
-    this.props.getProfile(userId);
-    this.props.getStatus(userId);
-  }
+    getProfile(userId);
+    getStatus(userId);
+  }, [authorizedUserId, match.params.userId || []]);
 
-  render() {
-    return <Profile {...this.props} />;
-  }
+  return <Profile {...props} />;
 }
 
 const mapStateToProps = (state) => ({
@@ -41,6 +34,6 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getProfile, getStatus, updateStatus })
+  connect(mapStateToProps, {getProfile, getStatus, updateStatus})
   //withAuthRedirect
 )(ProfileContainer);
