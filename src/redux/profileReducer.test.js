@@ -10,26 +10,26 @@ const state = {
   },
 };
 
-it("posts length should be increased", () => {
+test("posts length should be increased", () => {
   const action = addPost("new post");
   const newState = profileReducer(state, action);
   expect(newState.myPosts.posts.length).toBe(4);
 });
 
-it("new post message should be correct", () => {
+test("new post message should be correct", () => {
   const action = addPost("new post");
   const newState = profileReducer(state, action);
   expect(newState.myPosts.posts[3].message).toBe("new post");
 });
 
-it("posts length should be decreased", () => {
+test("posts length should be decreased", () => {
   const action = deletePost(2);
   const newState = profileReducer(state, action);
   expect(newState.myPosts.posts.length).toBe(2);
 });
 
-it("posts length shouldn't be decreased if id is incorrect", () => {
+test("posts length shouldn't be decreased if id is incorrect", () => {
   const action = deletePost(140);
   const newState = profileReducer(state, action);
   expect(newState.myPosts.posts.length).toBe(3);
-})
+});

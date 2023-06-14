@@ -1,6 +1,6 @@
 import { getUserAuthData } from "./authReducer";
 
-const INIT_SUCCEEDED = "INITIALIZING_SUCCEEDED";
+const INIT_SUCCEEDED = "app/INITIALIZING_SUCCEEDED";
 
 const initialState = {
   initialized: false,
@@ -22,10 +22,11 @@ export const initSucceeded = () => ({
   type: INIT_SUCCEEDED,
 });
 
-export const initializeApp = () => (dispatch) => {
+export const initializeApp = () => async (dispatch) => {
   let promise = dispatch(getUserAuthData());
   // in case there's a lot of promises and I need to wait all of them
-  Promise.all([promise]).then(() => dispatch(initSucceeded()));
+  await Promise.all([promise]);
+  dispatch(initSucceeded());
 };
 
 export default appReducer;

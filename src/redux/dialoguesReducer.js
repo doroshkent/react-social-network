@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 
-const SEND_MESSAGE = "SEND_MESSAGE";
+const SEND_MESSAGE = "dialogues/SEND_MESSAGE";
 
 const initialState = {
   dialoguesList: [

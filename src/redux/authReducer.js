@@ -1,6 +1,6 @@
-import { authApi } from "../api/api";
+import { authApi } from "api/api";
 
-const SET_USER_DATA = "SET_USER_DATA";
+const SET_USER_DATA = "auth/SET_USER_DATA";
 
 const initialState = {
   id: null,
@@ -26,31 +26,28 @@ export const setUserAuthData = (id, email, login, isAuth) => ({
   payload: { id, email, login, isAuth },
 });
 
-export const getUserAuthData = () => (dispatch) => {
-  return authApi.me().then((data) => {
-    if (data.resultCode === 0) {
-      let { id, email, login } = data.data;
-      dispatch(setUserAuthData(id, email, login, true));
-    }
-  });
+export const getUserAuthData = () => async (dispatch) => {
+  const data = await authApi.me();
+  if (data.resultCode === 0) {
+    let { id, email, login } = data.data;
+    dispatch(setUserAuthData(id, email, login, true));
+  }
 };
 
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authApi.login(email, password, rememberMe).then((data) => {
-    if (data.resultCode === 0) {
-      dispatch(getUserAuthData());
-    } else {
-      throw new Error("Incorrect data");
-    }
-  });
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  const data = await authApi.login(email, password, rememberMe);
+  if (data.resultCode === 0) {
+    dispatch(getUserAuthData());
+  } else {
+    throw new Error("Incorrect data");
+  }
 };
 
-export const logout = () => (dispatch) => {
-  authApi.logout().then((data) => {
-    if (data.resultCode === 0) {
-      dispatch(setUserAuthData(null, null, null, false));
-    }
-  });
+export const logout = () => async (dispatch) => {
+  const data = await authApi.logout();
+  if (data.resultCode === 0) {
+    dispatch(setUserAuthData(null, null, null, false));
+  }
 };
 
 export default authReducer;
