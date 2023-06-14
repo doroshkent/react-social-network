@@ -2,7 +2,7 @@ import Textarea from "style/common/Textarea";
 import Button from "style/common/Button";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Error } from "../../../style/common/ErrorMessage";
+import { Error } from "style/common/ErrorMessage";
 
 function NewPostForm({ addPost }) {
   const {
