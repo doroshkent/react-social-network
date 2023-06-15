@@ -11,12 +11,7 @@ import UserLocation from "style/Users/UserLocation";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-function User({
-  user,
-  follow,
-  unfollow,
-  followingInProgress,
-}) {
+function User({ user, follow, unfollow, followingInProgress }) {
   return (
     <div>
       <UserProfileCard>

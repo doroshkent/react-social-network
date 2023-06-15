@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Template from "Components/Template/Template";
 import AppWrapper from "style/Template/AppWrapper";
 import Router from "./Components/Router/Router";
@@ -6,24 +6,22 @@ import { connect } from "react-redux";
 import { initializeApp } from "./redux/appReducer";
 import Preloader from "./Components/common/Preloader";
 
-class App extends React.Component {
-  componentDidMount() {
-    this.props.initializeApp();
+function App({ initialized, initializeApp }) {
+  useEffect(() => {
+    initializeApp();
+  }, [initializeApp]);
+
+  if (!initialized) {
+    return <Preloader />;
   }
 
-  render() {
-    if (!this.props.initialized) {
-      return <Preloader />;
-    }
-
-    return (
-      <AppWrapper>
-        <Template>
-          <Router />
-        </Template>
-      </AppWrapper>
-    );
-  }
+  return (
+    <AppWrapper>
+      <Template>
+        <Router />
+      </Template>
+    </AppWrapper>
+  );
 }
 
 const mapStateToProps = (state) => ({
