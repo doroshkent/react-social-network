@@ -26,7 +26,7 @@ function ProfileInfo({ profile, status, updateStatus }) {
           )) || <ProfilePhoto src={userAva} />}
           {profile.fullName}
         </h1>
-        <Status status={status} updateStatus={updateStatus} />
+        <Status profileStatus={status} updateStatus={updateStatus} />
         {profile.lookingForAJob && (
           <>
             <UserStatus display={"inline"}>

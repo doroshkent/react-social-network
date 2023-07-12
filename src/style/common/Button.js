@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  display: block;
+  display: inline;
   background-color: cornflowerblue;
   border-radius: 3px;
   border: 1px solid #7aa7c7;

@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import UserStatus from "style/Users/UserStatus";
 import Textarea from "style/common/Textarea";
 
-function Status(props) {
+function Status({ profileStatus, updateStatus }) {
   const [editMode, setEditMode] = useState(false);
-  const [status, setStatus] = useState(props.status);
+  const [status, setStatus] = useState(profileStatus);
 
   useEffect(() => {
-    setStatus(props.status);
-  }, [props.status]);
+    setStatus(profileStatus);
+  }, [profileStatus]);
 
   const deactivateEditMode = () => {
     setEditMode(false);
-    props.updateStatus(status);
+    updateStatus(status);
   };
 
   const onStatusChange = (e) => {
@@ -34,7 +34,7 @@ function Status(props) {
       <div>
         {!editMode && (
           <UserStatus onDoubleClick={() => setEditMode(true)}>
-            {props.status || "Status"}
+            {profileStatus || "Status"}
           </UserStatus>
         )}
       </div>

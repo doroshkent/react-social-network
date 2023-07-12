@@ -17,7 +17,6 @@ function Header({ isAuth, login, id, logout }) {
             style={{
               backgroundColor: "white",
               color: "cornflowerblue",
-              display: "inline",
             }}
           >
             Log out

@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Pagination from "style/Users/Pagination/Pagination";
 import ActivePageNumber from "style/Users/Pagination/ActivePageNumber";
 import PageNumber from "style/Users/Pagination/PageNumber";
+import Button from "style/common/Button";
+import {BsArrowLeftCircleFill, BsArrowRightCircleFill} from "react-icons/bs";
 
-function Paginator({ userCount, pageSize, currentPage, onPageChange }) {
-  const pagesCount = Math.ceil(userCount / pageSize);
+function Paginator({ itemsCount, pageSize, currentPage, onPageChange, portionSize = 10 }) {
+  const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize));
+
+  const pagesCount = Math.ceil(itemsCount / pageSize);
 
   const pages = [];
 
@@ -12,14 +16,17 @@ function Paginator({ userCount, pageSize, currentPage, onPageChange }) {
     pages.push(i);
   }
 
-  const currentPages =
-    currentPage > 2
-      ? pages.slice(currentPage - 3, currentPage + 2)
-      : pages.slice(0, 5);
+  const portionCount = Math.ceil(pagesCount / portionSize);
+  const portionLeftBorder = (portionNumber - 1) * portionSize + 1;
+  const portionRightBorder = portionNumber * portionSize;
+
 
   return (
     <Pagination>
-      {currentPages.map((page) => {
+      { portionNumber > 1 && <BsArrowLeftCircleFill style={{color: "cornflowerblue"}} onClick={() => setPortionNumber(portionNumber - 1)} />}
+      {pages
+        .filter(page => page >= portionLeftBorder && page <= portionRightBorder)
+        .map((page) => {
         if (page === currentPage) {
           return <ActivePageNumber>{page}</ActivePageNumber>;
         }
@@ -27,6 +34,7 @@ function Paginator({ userCount, pageSize, currentPage, onPageChange }) {
           <PageNumber onClick={() => onPageChange(page)}>{page}</PageNumber>
         );
       })}
+      { portionNumber < portionCount && <BsArrowRightCircleFill style={{color: "cornflowerblue"}} onClick={() => setPortionNumber(portionNumber + 1)} /> }
     </Pagination>
   );
 }
