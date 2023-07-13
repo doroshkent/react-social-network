@@ -1,10 +1,12 @@
 import { profileApi } from "api/api";
 import { v4 } from "uuid";
+import profileInfo from "../pages/Profile/ProfileInfo/ProfileInfo";
 
 const ADD_POST = "profile/ADD_POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
 const SET_USER_STATUS = "profile/SET_USER_STATUS";
 const DELETE_POST = "profile/DELETE_POST";
+const UPDATE_PHOTO = "profile/UPDATE_PHOTO";
 
 const initialState = {
   profileInfo: null,
@@ -53,6 +55,14 @@ const profileReducer = (state = initialState, action) => {
           ),
         },
       };
+    case UPDATE_PHOTO:
+      return {
+        ...state,
+        profileInfo: {
+          ...state.profileInfo,
+          photos: action.photos,
+        },
+      };
     default:
       return state;
   }
@@ -74,6 +84,10 @@ export const deletePost = (postId) => ({
   type: DELETE_POST,
   postId,
 });
+const updatePhotoSuccess = (photos) => ({
+  type: UPDATE_PHOTO,
+  photos,
+});
 
 export const getProfile = (userId) => async (dispatch) => {
   const data = await profileApi.getUserProfile(userId);
@@ -89,6 +103,13 @@ export const updateStatus = (status) => async (dispatch) => {
   const data = await profileApi.updateUserStatus(status);
   if (data.resultCode === 0) {
     dispatch(setUserStatus(status));
+  }
+};
+
+export const updatePhoto = (photo) => async (dispatch) => {
+  const data = await profileApi.updateProfilePhoto(photo);
+  if (data.resultCode === 0) {
+    dispatch(updatePhotoSuccess(data.data.photos));
   }
 };
 

@@ -7,8 +7,9 @@ import jobImage from "assets/img/job.png";
 import UserContacts from "style/Profile/ProfileInfo/UserContacts";
 import Status from "./Status";
 import userAva from "assets/img/user.png";
+import ChangePhotoLabel from "style/Profile/ProfileInfo/ChangePhotoLabel";
 
-function ProfileInfo({ profile, status, updateStatus }) {
+function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto }) {
   if (!profile) {
     return <Preloader />;
   }
@@ -17,15 +18,32 @@ function ProfileInfo({ profile, status, updateStatus }) {
     ([, value]) => value !== null
   );
 
+  const onPhotoChange = (e) => {
+    if (e.target.files.length > 0) {
+      updatePhoto(e.target.files[0]);
+    }
+  };
+
   return (
     <div>
       <ProfileDescription>
         <h1>
-          {(profile.photos.large && (
-            <ProfilePhoto src={profile.photos.large} />
-          )) || <ProfilePhoto src={userAva} />}
+          <ProfilePhoto src={profile.photos.large || userAva} />
           {profile.fullName}
         </h1>
+        {isOwner && (
+          <div>
+            <ChangePhotoLabel htmlFor="filePicker">
+              Change photo
+            </ChangePhotoLabel>
+            <input
+              id="filePicker"
+              style={{ visibility: "hidden" }}
+              type="file"
+              onChange={onPhotoChange}
+            />
+          </div>
+        )}
         <Status profileStatus={status} updateStatus={updateStatus} />
         {profile.lookingForAJob && (
           <>
