@@ -1,12 +1,20 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Pagination from "style/Users/Pagination/Pagination";
 import ActivePageNumber from "style/Users/Pagination/ActivePageNumber";
 import PageNumber from "style/Users/Pagination/PageNumber";
 import Button from "style/common/Button";
-import {BsArrowLeftCircleFill, BsArrowRightCircleFill} from "react-icons/bs";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
-function Paginator({ itemsCount, pageSize, currentPage, onPageChange, portionSize = 10 }) {
-  const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize));
+function Paginator({
+  itemsCount,
+  pageSize,
+  currentPage,
+  onPageChange,
+  portionSize = 10,
+}) {
+  const [portionNumber, setPortionNumber] = useState(
+    Math.ceil(currentPage / portionSize)
+  );
 
   const pagesCount = Math.ceil(itemsCount / pageSize);
 
@@ -20,21 +28,32 @@ function Paginator({ itemsCount, pageSize, currentPage, onPageChange, portionSiz
   const portionLeftBorder = (portionNumber - 1) * portionSize + 1;
   const portionRightBorder = portionNumber * portionSize;
 
-
   return (
     <Pagination>
-      { portionNumber > 1 && <BsArrowLeftCircleFill style={{color: "cornflowerblue"}} onClick={() => setPortionNumber(portionNumber - 1)} />}
+      {portionNumber > 1 && (
+        <BsArrowLeftCircleFill
+          style={{ color: "cornflowerblue" }}
+          onClick={() => setPortionNumber(portionNumber - 1)}
+        />
+      )}
       {pages
-        .filter(page => page >= portionLeftBorder && page <= portionRightBorder)
+        .filter(
+          (page) => page >= portionLeftBorder && page <= portionRightBorder
+        )
         .map((page) => {
-        if (page === currentPage) {
-          return <ActivePageNumber>{page}</ActivePageNumber>;
-        }
-        return (
-          <PageNumber onClick={() => onPageChange(page)}>{page}</PageNumber>
-        );
-      })}
-      { portionNumber < portionCount && <BsArrowRightCircleFill style={{color: "cornflowerblue"}} onClick={() => setPortionNumber(portionNumber + 1)} /> }
+          if (page === currentPage) {
+            return <ActivePageNumber>{page}</ActivePageNumber>;
+          }
+          return (
+            <PageNumber onClick={() => onPageChange(page)}>{page}</PageNumber>
+          );
+        })}
+      {portionNumber < portionCount && (
+        <BsArrowRightCircleFill
+          style={{ color: "cornflowerblue" }}
+          onClick={() => setPortionNumber(portionNumber + 1)}
+        />
+      )}
     </Pagination>
   );
 }
