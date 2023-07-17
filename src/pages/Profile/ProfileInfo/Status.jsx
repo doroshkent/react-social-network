@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import UserStatus from "style/Users/UserStatus";
 import Textarea from "style/common/Textarea";
 
-function Status({ profileStatus, updateStatus }) {
+function Status({profileStatus, updateStatus}) {
   const [editMode, setEditMode] = useState(false);
   const [status, setStatus] = useState(profileStatus);
 
@@ -31,13 +31,11 @@ function Status({ profileStatus, updateStatus }) {
           />
         )}
       </div>
-      <div>
-        {!editMode && (
-          <UserStatus onDoubleClick={() => setEditMode(true)}>
-            {profileStatus || "Status"}
-          </UserStatus>
-        )}
-      </div>
+      {!editMode && (
+        <UserStatus style={{display: "inline"}} onDoubleClick={() => setEditMode(true)}>
+          {profileStatus || "Status"}
+        </UserStatus>
+      )}
     </>
   );
 }
