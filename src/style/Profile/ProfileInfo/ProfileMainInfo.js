@@ -6,9 +6,9 @@ const ProfileMainInfo = styled.div`
   grid-template-columns: 160px max-content;
   grid-template-rows: 50px 50px 1fr;
   grid-template-areas:
-  "photo fullName"
-  "photo status"
-  "photo changePhoto";
-`
+    "photo fullName"
+    "photo status"
+    "photo changePhoto";
+`;
 
 export default ProfileMainInfo;

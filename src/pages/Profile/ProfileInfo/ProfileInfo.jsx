@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ProfileDescription from "style/Profile/ProfileInfo/ProfileDescription";
 import Preloader from "Components/common/Preloader";
 import UserStatus from "style/Users/UserStatus";
@@ -12,11 +12,11 @@ import Button from "style/common/Button";
 import ProfileMainInfo from "style/Profile/ProfileInfo/ProfileMainInfo";
 import FullName from "style/Profile/ProfileInfo/FullName";
 
-function ProfileInfo({profile, status, updateStatus, isOwner, updatePhoto}) {
+function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto }) {
   const [showChangePhoto, setShowChangePhoto] = useState(false);
 
   if (!profile) {
-    return <Preloader/>;
+    return <Preloader />;
   }
 
   const onPhotoChange = (e) => {
@@ -28,33 +28,34 @@ function ProfileInfo({profile, status, updateStatus, isOwner, updatePhoto}) {
   return (
     <div>
       <ProfileDescription>
-        <ProfileMainInfo onMouseLeave={()=> setShowChangePhoto(false)}>
-          <ProfilePhoto src={profile.photos.large || userAva} onMouseEnter={() => setShowChangePhoto(true)}/>
-          <FullName>
-            {profile.fullName}
-          </FullName>
+        <ProfileMainInfo onMouseLeave={() => setShowChangePhoto(false)}>
+          <ProfilePhoto
+            src={profile.photos.large || userAva}
+            onMouseEnter={() => setShowChangePhoto(true)}
+          />
+          <FullName>{profile.fullName}</FullName>
           {isOwner && showChangePhoto && (
-            <div style={{gridArea: "changePhoto"}}>
+            <div style={{ gridArea: "changePhoto" }}>
               <ChangePhotoLabel htmlFor="filePicker">
                 Change photo
               </ChangePhotoLabel>
               <input
                 id="filePicker"
-                style={{visibility: "hidden"}}
+                style={{ visibility: "hidden" }}
                 type="file"
                 onChange={onPhotoChange}
               />
             </div>
           )}
-          <Status profileStatus={status} updateStatus={updateStatus}/>
+          <Status profileStatus={status} updateStatus={updateStatus} />
         </ProfileMainInfo>
-        <ProfileData profile={profile} isOwner={isOwner}/>
+        <ProfileData profile={profile} isOwner={isOwner} />
       </ProfileDescription>
     </div>
   );
 }
 
-function ProfileData({profile, isOwner}) {
+function ProfileData({ profile, isOwner }) {
   const filteredContacts = Object.entries(profile.contacts).filter(
     ([, value]) => value !== null
   );
@@ -65,7 +66,7 @@ function ProfileData({profile, isOwner}) {
       {profile.lookingForAJob && (
         <>
           <UserStatus display={"inline"}>
-            <img src={jobImage} height="60px"/>
+            <img src={jobImage} height="60px" />
             {profile.lookingForAJobDescription}
           </UserStatus>
         </>
@@ -83,7 +84,7 @@ function ProfileData({profile, isOwner}) {
         </>
       )}
     </>
-  )
+  );
 }
 
 export default ProfileInfo;
