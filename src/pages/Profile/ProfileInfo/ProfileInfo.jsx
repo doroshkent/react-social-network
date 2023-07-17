@@ -3,7 +3,6 @@ import ProfileDescription from "style/Profile/ProfileInfo/ProfileDescription";
 import Preloader from "Components/common/Preloader";
 import UserStatus from "style/Users/UserStatus";
 import ProfilePhoto from "style/Profile/ProfileInfo/ProfilePhoto";
-import jobImage from "assets/img/job.png";
 import UserContacts from "style/Profile/ProfileInfo/UserContacts";
 import Status from "./Status";
 import userAva from "assets/img/user.png";
@@ -11,9 +10,12 @@ import ChangePhotoLabel from "style/Profile/ProfileInfo/ChangePhotoLabel";
 import Button from "style/common/Button";
 import ProfileMainInfo from "style/Profile/ProfileInfo/ProfileMainInfo";
 import FullName from "style/Profile/ProfileInfo/FullName";
+import ProfileDataForm from "./ProfileDataForm";
+import SMLink from "style/Profile/ProfileInfo/SMLink";
 
-function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto }) {
+function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto, saveProfile }) {
   const [showChangePhoto, setShowChangePhoto] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   if (!profile) {
     return <Preloader />;
@@ -49,26 +51,40 @@ function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto }) {
           )}
           <Status profileStatus={status} updateStatus={updateStatus} />
         </ProfileMainInfo>
-        <ProfileData profile={profile} isOwner={isOwner} />
+        {editMode ? (
+          <ProfileDataForm deactivateEditMode={() => setEditMode(false)} saveProfile={saveProfile} profile={profile}/>
+        ) : (
+          <ProfileData
+            profile={profile}
+            isOwner={isOwner}
+            activateEditMode={() => setEditMode(true)}
+          />
+        )}
       </ProfileDescription>
     </div>
   );
 }
 
-function ProfileData({ profile, isOwner }) {
+function ProfileData({ profile, isOwner, activateEditMode }) {
   const filteredContacts = Object.entries(profile.contacts).filter(
     ([, value]) => value !== null
   );
 
   return (
     <>
-      {isOwner && <Button>Change profile description</Button>}
+      {isOwner && (
+        <Button onClick={activateEditMode}>Change profile description</Button>
+      )}
+      {profile.aboutMe && (
+        <>
+          <h2>About me:</h2>
+          <UserStatus>{profile.aboutMe}</UserStatus>
+        </>
+      )}
       {profile.lookingForAJob && (
         <>
-          <UserStatus display={"inline"}>
-            <img src={jobImage} height="60px" />
-            {profile.lookingForAJobDescription}
-          </UserStatus>
+          <h2>Looking for a job:</h2>
+          <UserStatus>{profile.lookingForAJobDescription}</UserStatus>
         </>
       )}
       {filteredContacts.length > 0 && (
@@ -77,7 +93,10 @@ function ProfileData({ profile, isOwner }) {
           <UserContacts>
             {filteredContacts.map(([socialMedia, link]) => (
               <li>
-                {socialMedia}: {link}
+                {socialMedia}:{" "}
+                <SMLink href={link} target="_blank">
+                  {link}
+                </SMLink>
               </li>
             ))}
           </UserContacts>

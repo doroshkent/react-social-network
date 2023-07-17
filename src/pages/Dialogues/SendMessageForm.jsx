@@ -2,7 +2,7 @@ import Textarea from "style/common/Textarea";
 import Button from "style/common/Button";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Error } from "style/common/ErrorMessage";
+import { ErrorMesssage } from "style/common/ErrorMessage";
 
 function SendMessageForm({ sendMessage }) {
   const {
@@ -27,10 +27,10 @@ function SendMessageForm({ sendMessage }) {
         })}
       />
       {errors?.newMessage?.type === "required" && (
-        <Error>{errors.newMessage.message}</Error>
+        <ErrorMesssage>{errors.newMessage.message}</ErrorMesssage>
       )}
       {errors?.newMessage?.type === "maxLength" && (
-        <Error>{errors.newMessage.message}</Error>
+        <ErrorMesssage>{errors.newMessage.message}</ErrorMesssage>
       )}
       <Button>Send message</Button>
     </form>

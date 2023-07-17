@@ -39,7 +39,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
   if (data.resultCode === 0) {
     dispatch(getUserAuthData());
   } else {
-    throw new Error("Incorrect data");
+    throw new Error(`${data.messages[0]}`);
   }
 };
 

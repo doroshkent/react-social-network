@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import {
   getProfile,
-  getStatus,
+  getStatus, saveProfileData,
   updatePhoto,
   updateStatus,
 } from "redux/profileReducer";
@@ -36,6 +36,7 @@ function ProfileContainer({
       updateStatus={props.updateStatus}
       isOwner={!userId}
       updatePhoto={props.updatePhoto}
+      saveProfile={props.saveProfileData}
     />
   );
 }
@@ -53,6 +54,7 @@ export default compose(
     getStatus,
     updateStatus,
     updatePhoto,
+    saveProfileData,
   }),
   withAuthRedirect
 )(ProfileContainer);

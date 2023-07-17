@@ -4,7 +4,7 @@ import Input from "style/common/Input";
 import Button from "style/common/Button";
 import * as Styled from "style/Login/StyledLogin";
 import Textarea from "style/common/Textarea";
-import { Error } from "style/common/ErrorMessage";
+import { ErrorMesssage } from "style/common/ErrorMessage";
 import { connect } from "react-redux";
 import { login } from "redux/authReducer";
 import { Navigate } from "react-router-dom";
@@ -38,20 +38,20 @@ function LoginForm({ login }) {
           },
         })}
       />
-      {errors.email && <Error>{errors.email.message}</Error>}
+      {errors.email && <ErrorMesssage>{errors.email.message}</ErrorMesssage>}
       <Textarea
         placeholder={"Password"}
         type={"password"}
         {...register("password", { required: "Password is required" })}
       />
-      {errors.password && <Error>{errors.password.message}</Error>}
+      {errors.password && <ErrorMesssage>{errors.password.message}</ErrorMesssage>}
       <Input
         type="checkbox"
         placeholder="Remember me"
         {...register("rememberMe", {})}
       />
       Remember me
-      {serverError && <Error>{serverError}</Error>}
+      {serverError && <ErrorMesssage>{serverError}</ErrorMesssage>}
       <Button>Login</Button>
     </form>
   );

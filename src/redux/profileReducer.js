@@ -1,6 +1,5 @@
 import { profileApi } from "api/api";
 import { v4 } from "uuid";
-import profileInfo from "../pages/Profile/ProfileInfo/ProfileInfo";
 
 const ADD_POST = "profile/ADD_POST";
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE";
@@ -110,6 +109,16 @@ export const updatePhoto = (photo) => async (dispatch) => {
   const data = await profileApi.updateProfilePhoto(photo);
   if (data.resultCode === 0) {
     dispatch(updatePhotoSuccess(data.data.photos));
+  }
+};
+
+export const saveProfileData = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.id;
+  const data = await profileApi.updateProfile(profile);
+  if (data.resultCode === 0) {
+    dispatch(getProfile(userId));
+  } else {
+    throw new Error(`${data.messages[0]}`);
   }
 };
 

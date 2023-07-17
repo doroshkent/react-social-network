@@ -2,15 +2,15 @@ import styled from "styled-components";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import React from "react";
 
-const ErrorMessage = styled.p`
+const Error = styled.p`
   color: red;
 `;
 
-export const Error = ({ children }) => {
+export const ErrorMesssage = ({ children }) => {
   return (
-    <ErrorMessage>
+    <Error>
       <AiOutlineExclamationCircle style={{ verticalAlign: "middle" }} />
       {children}
-    </ErrorMessage>
+    </Error>
   );
 };

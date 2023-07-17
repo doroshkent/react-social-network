@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import AutosizeTextArea from 'textarea-autosize-reactjs';
 
-const Textarea = styled.input`
+const Textarea = styled(AutosizeTextArea)`
   display: block;
+  width: 100%;
+  max-width: 450px;
   background-color: #f6f8fa;
   border: 1px solid #d1d5da;
   border-radius: 3px;
