@@ -20,4 +20,8 @@ const Button = styled.button`
   }
 `;
 
+export const FollowButton = styled(Button)`
+  width: 100px;
+`;
+
 export default Button;

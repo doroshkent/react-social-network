@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import {
   getProfile,
-  getStatus, saveProfileData,
+  getStatus,
+  saveProfileData,
   updatePhoto,
   updateStatus,
 } from "redux/profileReducer";

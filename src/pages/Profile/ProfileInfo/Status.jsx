@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserStatus from "style/Users/UserStatus";
-import Textarea from "style/common/Textarea";
+import { Textarea } from "style/common/CommonInputStyles";
 
 function Status({ profileStatus, updateStatus }) {
   const [editMode, setEditMode] = useState(false);

@@ -1,28 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import Input from "style/common/Input";
 import Button from "style/common/Button";
 import * as Styled from "style/Login/StyledLogin";
-import Textarea from "style/common/Textarea";
 import { ErrorMesssage } from "style/common/ErrorMessage";
 import { connect } from "react-redux";
 import { login } from "redux/authReducer";
 import { Navigate } from "react-router-dom";
+import { CheckboxInput, Input, Textarea } from "style/common/CommonInputStyles";
 
 function LoginForm({ login }) {
-  const [serverError, setServerError] = useState("");
-
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
+    trigger,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = ({ email, password, rememberMe }) => {
-    login(email, password, rememberMe);
-    if (Error) {
-      setServerError("Incorrect Email or Password");
+  const onSubmit = async ({ email, password, rememberMe }) => {
+    try {
+      await login(email, password, rememberMe);
+    } catch (e) {
+      setError("server", { message: e.message });
     }
+  };
+
+  const handleInput = (fieldName) => {
+    clearErrors("server");
+    trigger(fieldName);
   };
 
   return (
@@ -37,21 +43,25 @@ function LoginForm({ login }) {
               "Email address must be a valid address",
           },
         })}
+        onChange={() => handleInput("Email")}
       />
       {errors.email && <ErrorMesssage>{errors.email.message}</ErrorMesssage>}
-      <Textarea
+      <Input
         placeholder={"Password"}
         type={"password"}
         {...register("password", { required: "Password is required" })}
+        onChange={() => handleInput("Password")}
       />
-      {errors.password && <ErrorMesssage>{errors.password.message}</ErrorMesssage>}
-      <Input
+      {errors.password && (
+        <ErrorMesssage>{errors.password.message}</ErrorMesssage>
+      )}
+      <CheckboxInput
         type="checkbox"
         placeholder="Remember me"
         {...register("rememberMe", {})}
       />
       Remember me
-      {serverError && <ErrorMesssage>{serverError}</ErrorMesssage>}
+      {errors.server && <ErrorMesssage>{errors.server.message}</ErrorMesssage>}
       <Button>Login</Button>
     </form>
   );

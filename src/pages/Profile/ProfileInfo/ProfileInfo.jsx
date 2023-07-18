@@ -12,8 +12,16 @@ import ProfileMainInfo from "style/Profile/ProfileInfo/ProfileMainInfo";
 import FullName from "style/Profile/ProfileInfo/FullName";
 import ProfileDataForm from "./ProfileDataForm";
 import SMLink from "style/Profile/ProfileInfo/SMLink";
+import isAbsoluteURL from "utils/isAbsoluteURL";
 
-function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto, saveProfile }) {
+function ProfileInfo({
+  profile,
+  status,
+  updateStatus,
+  isOwner,
+  updatePhoto,
+  saveProfile,
+}) {
   const [showChangePhoto, setShowChangePhoto] = useState(false);
   const [editMode, setEditMode] = useState(false);
 
@@ -52,7 +60,11 @@ function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto, save
           <Status profileStatus={status} updateStatus={updateStatus} />
         </ProfileMainInfo>
         {editMode ? (
-          <ProfileDataForm deactivateEditMode={() => setEditMode(false)} saveProfile={saveProfile} profile={profile}/>
+          <ProfileDataForm
+            deactivateEditMode={() => setEditMode(false)}
+            saveProfile={saveProfile}
+            profile={profile}
+          />
         ) : (
           <ProfileData
             profile={profile}
@@ -67,7 +79,7 @@ function ProfileInfo({ profile, status, updateStatus, isOwner, updatePhoto, save
 
 function ProfileData({ profile, isOwner, activateEditMode }) {
   const filteredContacts = Object.entries(profile.contacts).filter(
-    ([, value]) => value !== null
+    ([, value]) => value
   );
 
   return (
@@ -94,7 +106,10 @@ function ProfileData({ profile, isOwner, activateEditMode }) {
             {filteredContacts.map(([socialMedia, link]) => (
               <li>
                 {socialMedia}:{" "}
-                <SMLink href={link} target="_blank">
+                <SMLink
+                  href={isAbsoluteURL(link) ? link : `https://${link}`}
+                  target="_blank"
+                >
                   {link}
                 </SMLink>
               </li>

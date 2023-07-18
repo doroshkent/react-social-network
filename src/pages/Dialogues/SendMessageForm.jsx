@@ -1,8 +1,8 @@
-import Textarea from "style/common/Textarea";
 import Button from "style/common/Button";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMesssage } from "style/common/ErrorMessage";
+import { Textarea } from "style/common/CommonInputStyles";
 
 function SendMessageForm({ sendMessage }) {
   const {
