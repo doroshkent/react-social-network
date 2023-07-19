@@ -12,9 +12,21 @@ const initialState = {
   status: "",
   myPosts: {
     posts: [
-      { id: "0175d1f0-a8c6-41bf-8d02-df5734d829a4", message: "My first post", likesCount: 143 },
-      { id: "83c7ba2f-7392-4d7d-9e23-35adbe186046", message: "This post was made by props", likesCount: 16 },
-      { id: "a11e3995-b0bd-4d58-8c48-5e49ae7f7f23", message: "Вернула стену вместо Дурова", likesCount: 14 },
+      {
+        id: "0175d1f0-a8c6-41bf-8d02-df5734d829a4",
+        message: "My first post",
+        likesCount: 143,
+      },
+      {
+        id: "83c7ba2f-7392-4d7d-9e23-35adbe186046",
+        message: "This post was made by props",
+        likesCount: 16,
+      },
+      {
+        id: "a11e3995-b0bd-4d58-8c48-5e49ae7f7f23",
+        message: "Вернула стену вместо Дурова",
+        likesCount: 14,
+      },
     ],
   },
 };

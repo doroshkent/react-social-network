@@ -44,7 +44,9 @@ function Paginator({
             return <ActivePageNumber key={page}>{page}</ActivePageNumber>;
           }
           return (
-            <PageNumber key={page} onClick={() => onPageChange(page)}>{page}</PageNumber>
+            <PageNumber key={page} onClick={() => onPageChange(page)}>
+              {page}
+            </PageNumber>
           );
         })}
       {portionNumber < portionCount && (

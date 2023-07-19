@@ -34,7 +34,10 @@ function ProfileDataForm({ deactivateEditMode, saveProfile, profile }) {
 
   return (
     <>
-      <ProfileForm onSubmit={handleSubmit(onSubmit)} onBlur={deactivateEditMode}>
+      <ProfileForm
+        onSubmit={handleSubmit(onSubmit)}
+        onBlur={deactivateEditMode}
+      >
         <Button>Save</Button>
         {errors.server && (
           <ErrorMesssage>{errors.server.message}</ErrorMesssage>

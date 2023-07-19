@@ -8,7 +8,7 @@ import { login } from "redux/authReducer";
 import { Navigate } from "react-router-dom";
 import { CheckboxInput, Input, Textarea } from "style/common/CommonInputStyles";
 
-function LoginForm({ login }) {
+function LoginForm({ login, captchaUrl }) {
   const {
     register,
     handleSubmit,
@@ -18,9 +18,9 @@ function LoginForm({ login }) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async ({ email, password, rememberMe }) => {
+  const onSubmit = async ({ email, password, rememberMe, captcha }) => {
     try {
-      await login(email, password, rememberMe);
+      await login(email, password, rememberMe, captcha);
     } catch (e) {
       setError("server", { message: e.message });
     }
@@ -60,25 +60,31 @@ function LoginForm({ login }) {
         placeholder="Remember me"
         {...register("rememberMe", {})}
       />
-      Remember me
+      Remember me <br />
       {errors.server && <ErrorMesssage>{errors.server.message}</ErrorMesssage>}
+      {captchaUrl && <><img src={captchaUrl}/>
+      <Input {...register("captcha", {required: "Captcha is required"})} /></>}
+      {errors.captcha && (
+        <ErrorMesssage>{errors.captcha.message}</ErrorMesssage>
+      )}
       <Button>Login</Button>
     </form>
   );
 }
 
-function Login({ isAuth, login }) {
+function Login({ isAuth, login, captchaUrl }) {
   if (isAuth) return <Navigate to={"/profile"} />;
 
   return (
     <Styled.Login>
       <h1>Login</h1>
-      <LoginForm login={login} />
+      <LoginForm login={login} captchaUrl={captchaUrl} />
     </Styled.Login>
   );
 }
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl,
 });
 export default connect(mapStateToProps, { login })(Login);
