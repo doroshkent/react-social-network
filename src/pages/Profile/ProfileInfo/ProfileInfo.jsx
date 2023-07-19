@@ -104,7 +104,7 @@ function ProfileData({ profile, isOwner, activateEditMode }) {
           <h2>Contacts:</h2>
           <UserContacts>
             {filteredContacts.map(([socialMedia, link]) => (
-              <li>
+              <li key={socialMedia}>
                 {socialMedia}:{" "}
                 <SMLink
                   href={isAbsoluteURL(link) ? link : `https://${link}`}

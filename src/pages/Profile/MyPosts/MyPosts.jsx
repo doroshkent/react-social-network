@@ -11,7 +11,7 @@ function MyPosts({ myPosts: { posts }, addPost, deletePost }) {
       <NewPostForm addPost={addPost} />
       <div>
         {[...posts].reverse().map((post) => (
-          <Post post={post} deletePost={deletePost} />
+          <Post key={post.id} post={post} deletePost={deletePost} />
         ))}
       </div>
     </PostsBlock>

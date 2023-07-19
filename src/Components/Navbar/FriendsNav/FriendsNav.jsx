@@ -12,7 +12,7 @@ function FriendsNav({ friends }) {
     <FriendsSidebar>
       <li>
         {pickedFriends.map((friend) => (
-          <Friend friend={friend} />
+          <Friend key={friend.id} friend={friend} />
         ))}
       </li>
     </FriendsSidebar>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Pagination from "style/Users/Pagination/Pagination";
 import ActivePageNumber from "style/Users/Pagination/ActivePageNumber";
 import PageNumber from "style/Users/Pagination/PageNumber";
-import Button from "style/common/Button";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 function Paginator({
@@ -42,10 +41,10 @@ function Paginator({
         )
         .map((page) => {
           if (page === currentPage) {
-            return <ActivePageNumber>{page}</ActivePageNumber>;
+            return <ActivePageNumber key={page}>{page}</ActivePageNumber>;
           }
           return (
-            <PageNumber onClick={() => onPageChange(page)}>{page}</PageNumber>
+            <PageNumber key={page} onClick={() => onPageChange(page)}>{page}</PageNumber>
           );
         })}
       {portionNumber < portionCount && (

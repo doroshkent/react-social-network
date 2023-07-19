@@ -34,7 +34,7 @@ function ProfileDataForm({ deactivateEditMode, saveProfile, profile }) {
 
   return (
     <>
-      <ProfileForm onSubmit={handleSubmit(onSubmit)}>
+      <ProfileForm onSubmit={handleSubmit(onSubmit)} onBlur={deactivateEditMode}>
         <Button>Save</Button>
         {errors.server && (
           <ErrorMesssage>{errors.server.message}</ErrorMesssage>
@@ -65,7 +65,7 @@ function ProfileDataForm({ deactivateEditMode, saveProfile, profile }) {
         <h2>Contacts:</h2>
         <UserContacts>
           {Object.keys(profile.contacts).map((socialMedia) => (
-            <li>
+            <li key={socialMedia}>
               {socialMedia}:{" "}
               <Textarea
                 placeholder={socialMedia}

@@ -12,12 +12,12 @@ function Dialogues({ dialogues: { dialoguesList, messages }, sendMessage }) {
     <StyledDialogues>
       <DialogueList>
         {dialoguesList.map((dialogue) => (
-          <Dialogue dialogue={dialogue} />
+          <Dialogue key={dialogue.id} dialogue={dialogue} />
         ))}
       </DialogueList>
       <MessageList>
         {messages.map((message) => (
-          <Message message={message} />
+          <Message key={message.id} message={message} />
         ))}
         <SendMessageForm sendMessage={sendMessage} />
       </MessageList>
