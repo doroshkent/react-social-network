@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 import Music from "pages/Music/Music";
 import News from "pages/News/News";
@@ -18,6 +18,7 @@ function Router() {
   return (
     <Suspense fallback={<Preloader />}>
       <Routes>
+        <Route path={"/"} element={<Navigate to={"/profile"} />} />
         <Route path="/profile" element={<ProfileContainer />}>
           <Route path=":userId" element={<ProfileContainer />} />
         </Route>

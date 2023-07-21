@@ -42,17 +42,18 @@ export const getUserAuthData = () => async (dispatch) => {
   }
 };
 
-export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
-  const data = await authApi.login(email, password, rememberMe, captcha);
-  if (data.resultCode === 0) {
-    dispatch(getUserAuthData());
-  } else {
-    if (data.resultCode === 10) {
-      dispatch(getCaptchaUrl());
+export const login =
+  (email, password, rememberMe, captcha) => async (dispatch) => {
+    const data = await authApi.login(email, password, rememberMe, captcha);
+    if (data.resultCode === 0) {
+      dispatch(getUserAuthData());
+    } else {
+      if (data.resultCode === 10) {
+        dispatch(getCaptchaUrl());
+      }
+      throw new Error(`${data.messages[0]}`);
     }
-    throw new Error(`${data.messages[0]}`);
-  }
-};
+  };
 
 export const getCaptchaUrl = () => async (dispatch) => {
   const data = await securityAPI.getCaptchaUrl();

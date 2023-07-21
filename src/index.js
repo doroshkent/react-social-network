@@ -10,7 +10,6 @@ import GlobalFonts from "./style/common/fonts";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  // eslint-disable-next-line react/jsx-filename-extension
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>

@@ -62,8 +62,14 @@ function LoginForm({ login, captchaUrl }) {
       />
       Remember me <br />
       {errors.server && <ErrorMesssage>{errors.server.message}</ErrorMesssage>}
-      {captchaUrl && <><img src={captchaUrl}/>
-      <Input {...register("captcha", {required: "Captcha is required"})} /></>}
+      {captchaUrl && (
+        <>
+          <img src={captchaUrl} />
+          <Input
+            {...register("captcha", { required: "Captcha is required" })}
+          />
+        </>
+      )}
       {errors.captcha && (
         <ErrorMesssage>{errors.captcha.message}</ErrorMesssage>
       )}
