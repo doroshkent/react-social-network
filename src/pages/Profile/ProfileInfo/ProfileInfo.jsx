@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useMemo, useState} from "react";
 import ProfileDescription from "style/Profile/ProfileInfo/ProfileDescription";
 import Preloader from "Components/common/Preloader";
 import UserStatus from "style/Users/UserStatus";
@@ -78,9 +78,10 @@ function ProfileInfo({
 }
 
 function ProfileData({ profile, isOwner, activateEditMode }) {
-  const filteredContacts = Object.entries(profile.contacts).filter(
-    ([, value]) => value
-  );
+  const filteredContacts = useMemo(() =>
+    Object.entries(profile.contacts).filter(
+      ([, value]) => value
+    ), [profile.contacts])
 
   return (
     <>

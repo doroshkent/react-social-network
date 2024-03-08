@@ -9,7 +9,7 @@ import Preloader from "./Components/common/Preloader";
 function App({ initialized, initializeApp }) {
   useEffect(() => {
     initializeApp();
-  }, [initializeApp]);
+  }, [initialized]);
 
   if (!initialized) {
     return <Preloader />;

@@ -2,8 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "style/common/Button";
 import * as Styled from "style/Login/StyledLogin";
-import { ErrorMesssage } from "style/common/ErrorMessage";
-import { connect } from "react-redux";
+import { ErrorMessage } from "style/common/ErrorMessage";
+import { connect, useSelector } from "react-redux";
 import { login } from "redux/authReducer";
 import { Navigate } from "react-router-dom";
 import { CheckboxInput, Input, Textarea } from "style/common/CommonInputStyles";
@@ -17,6 +17,10 @@ function LoginForm({ login, captchaUrl }) {
     trigger,
     formState: { errors },
   } = useForm();
+  const { isAuth } = useSelector((state) => ({
+    isAuth: state.auth.isAuth,
+  }));
+  if (isAuth) return <Navigate to={"/profile"} />;
 
   const onSubmit = async ({ email, password, rememberMe, captcha }) => {
     try {
@@ -33,6 +37,9 @@ function LoginForm({ login, captchaUrl }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <small>For demo: <br/>
+        email free@samuraijs.com <br/>
+        password free </small>
       <Textarea
         placeholder={"Email"}
         {...register("email", {
@@ -45,7 +52,7 @@ function LoginForm({ login, captchaUrl }) {
         })}
         onChange={() => handleInput("Email")}
       />
-      {errors.email && <ErrorMesssage>{errors.email.message}</ErrorMesssage>}
+      {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
       <Input
         placeholder={"Password"}
         type={"password"}
@@ -53,7 +60,7 @@ function LoginForm({ login, captchaUrl }) {
         onChange={() => handleInput("Password")}
       />
       {errors.password && (
-        <ErrorMesssage>{errors.password.message}</ErrorMesssage>
+        <ErrorMessage>{errors.password.message}</ErrorMessage>
       )}
       <CheckboxInput
         type="checkbox"
@@ -61,7 +68,7 @@ function LoginForm({ login, captchaUrl }) {
         {...register("rememberMe", {})}
       />
       Remember me <br />
-      {errors.server && <ErrorMesssage>{errors.server.message}</ErrorMesssage>}
+      {errors.server && <ErrorMessage>{errors.server.message}</ErrorMessage>}
       {captchaUrl && (
         <>
           <img src={captchaUrl} />
@@ -71,7 +78,7 @@ function LoginForm({ login, captchaUrl }) {
         </>
       )}
       {errors.captcha && (
-        <ErrorMesssage>{errors.captcha.message}</ErrorMesssage>
+        <ErrorMessage>{errors.captcha.message}</ErrorMessage>
       )}
       <Button>Login</Button>
     </form>

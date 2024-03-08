@@ -125,7 +125,6 @@ export const updatePhoto = (photo) => async (dispatch) => {
 };
 
 export const saveProfileData = (profile) => async (dispatch, getState) => {
-  debugger;
   const userId = getState().auth.id;
   const data = await profileApi.updateProfile(profile);
   if (data.resultCode === 0) {

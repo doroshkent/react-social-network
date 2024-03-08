@@ -6,7 +6,7 @@ const Error = styled.p`
   color: red;
 `;
 
-export const ErrorMesssage = ({ children }) => {
+export const ErrorMessage = ({ children }) => {
   return (
     <Error>
       <AiOutlineExclamationCircle style={{ verticalAlign: "middle" }} />

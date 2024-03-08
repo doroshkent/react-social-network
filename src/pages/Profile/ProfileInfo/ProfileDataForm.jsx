@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Button from "style/common/Button";
 import ProfileForm from "style/Profile/ProfileInfo/ProfileForm";
 import UserContacts from "style/Profile/ProfileInfo/UserContacts";
-import { ErrorMesssage } from "style/common/ErrorMessage";
+import { ErrorMessage } from "style/common/ErrorMessage";
 import { CheckboxInput, Textarea } from "style/common/CommonInputStyles";
 
 function ProfileDataForm({ deactivateEditMode, saveProfile, profile }) {
@@ -35,7 +35,7 @@ function ProfileDataForm({ deactivateEditMode, saveProfile, profile }) {
   return (
     <ProfileForm onSubmit={handleSubmit(onSubmit)}>
       <Button>Save</Button>
-      {errors.server && <ErrorMesssage>{errors.server.message}</ErrorMesssage>}
+      {errors.server && <ErrorMessage>{errors.server.message}</ErrorMessage>}
       <h2>Full name:</h2>
       <Textarea
         placeholder={"You're full name"}

@@ -1,7 +1,7 @@
 import Button from "style/common/Button";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { ErrorMesssage } from "style/common/ErrorMessage";
+import { ErrorMessage } from "style/common/ErrorMessage";
 import { Textarea } from "style/common/CommonInputStyles";
 
 function NewPostForm({ addPost }) {
@@ -27,10 +27,10 @@ function NewPostForm({ addPost }) {
         })}
       />
       {errors?.newPost?.type === "required" && (
-        <ErrorMesssage>Type the text</ErrorMesssage>
+        <ErrorMessage>Type the text</ErrorMessage>
       )}
       {errors?.newPost?.type === "maxLength" && (
-        <ErrorMesssage>Max length is 40</ErrorMesssage>
+        <ErrorMessage>Max length is 40</ErrorMessage>
       )}
       <Button>Add post</Button>
     </form>
