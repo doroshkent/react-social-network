@@ -57,7 +57,7 @@ function ProfileInfo({
               />
             </div>
           )}
-          <Status profileStatus={status} updateStatus={updateStatus} />
+          <Status profileStatus={status} updateStatus={updateStatus} isOwner={isOwner} />
         </ProfileMainInfo>
         {editMode ? (
           <ProfileDataForm
